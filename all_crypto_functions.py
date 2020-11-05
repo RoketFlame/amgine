@@ -12,63 +12,65 @@ MORSE_dict_RU = {'а': '.-', 'б': '-...', 'в': '.--', 'г': '--.', 'д': '-..'
                  'о': '---', 'п': '.--.', 'р': '.-.', 'с': '...', 'т': '-', 'у': '..-', 'ф': '..-.',
                  'х': '....', 'ц': '-.-.', 'ч': '---.', 'ш': '----', 'щ': '--.-', 'ъ': '.--.-.',
                  'ы': '-.--', 'ь': '-..-', 'э': '..-..', 'ю': '..--', 'я': '.-.-'}
+
+
 # создание словарей для азбуки морзе
 # обработка исключений
-class SomethingWrong(Exception): # базовое исключение
+class SomethingWrong(Exception):  # базовое исключение
     pass
 
 
-class WrongLanguage(SomethingWrong): # исключение неверно выбранного языка
+class WrongLanguage(SomethingWrong):  # исключение неверно выбранного языка
     pass
 
 
-class WrongChar(SomethingWrong): # исключение некорректоного символа
+class WrongChar(SomethingWrong):  # исключение некорректоного символа
     pass
 
 
 def caesar_cipher(text, lang='RU', cap=True, shift=0):
     out = []
-    if lang == 'RU':       # выбираем нужный список для шифрования
-        main_list = ches_RU
+    if lang == 'RU':  # выбираем нужный список для шифрования
+        main_list = Caesar_RU
     elif lang == 'ENG':
-        main_list = ches_ENG
+        main_list = Caesar_ENG
     else:
-        raise WrongLanguage('Введён неверный язык') # исключение, если нет такого языка
-    if cap:     # проверка на сохранение регистра текста
+        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+    if cap:  # проверка на сохранение регистра текста
         for char in text:
-            if char == char.upper(): # определение больших букв
+            if char == char.upper():  # определение больших букв
                 char = char.lower()
                 if char in main_list:
-                    res = ches_RU[(ches_RU.index(char) + shift) % 33].capitalize()
+                    res = main_list[(main_list.index(char) + shift) % 33].capitalize()
                     # если буква относится к алфавиту, то применяем к ней шифр
                 else:
-                    res = char # иначе симл остается прежним
-            else: # все тоже самое и для маленьких букв
-                if char in ches_RU:
-                    res = ches_RU[(ches_RU.index(char) + shift) % 33]
+                    res = char  # иначе симл остается прежним
+            else:  # все тоже самое и для маленьких букв
+                if char in main_list:
+                    res = main_list[(main_list.index(char) + shift) % 33]
                 else:
                     res = char
-            out.append(res) # добавляем в список полученный результат
+            out.append(res)  # добавляем в список полученный результат
 
-    else: # если регистр текста не важен
-        text = text.lower() # приведение текста к нижнему регистру
+    else:  # если регистр текста не важен
+        text = text.lower()  # приведение текста к нижнему регистру
         for char in text:
-            if char in ches_RU: # все тот же алгоритм
-                res = ches_RU[(ches_RU.index(char) + shift) % 33]
+            if char in main_list:  # все тот же алгоритм
+                res = main_list[(main_list.index(char) + shift) % 33]
             else:
                 res = char
-            out.append(res) # добавляем в список полученный результат
+            out.append(res)  # добавляем в список полученный результат
 
-    return ''.join(out) # функция возвращает уже строку
+    return ''.join(out)  # функция возвращает уже строку
 
 
 def morse_code(text, lang='RU'):
-    if lang == 'RU': # Выбираем нужный словарь для шифрования
-        main_dict = dict_ru
+    if lang == 'RU':  # Выбираем нужный словарь для шифрования
+        main_dict = MORSE_dict_RU
     elif lang == 'ENG':
         main_dict = MORSE_dict_ENG
     else:
-        raise WrongLanguage('Введён неверный язык') # исключение, если нет такого языка
+        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
     out = []
     for i in text:
         if i in dict:
