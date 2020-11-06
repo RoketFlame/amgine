@@ -79,3 +79,48 @@ def morse_code(text, lang='RU'):
             raise WrongChar('В тексте есть символы из другого языка')
     return ' '.join(out)  # join применяется к пробелу,
     # чтобы при декодировании можно было легко отделить буквы в слове
+
+
+Vigenere_code_ENG = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+Vigenere_code_RU = [chr(i) for i in range(ord('а'), ord('я') + 1)]
+Vigenere_code_RU.insert(6, 'ё')
+
+
+def encrypt(key, text):
+    key = ''.join(map(lambda x: x if x.isalpha() or x == ' ' else '', key))
+    text = ''.join(map(lambda x: x if x.isalpha() or x == ' ' else '', text))
+    out = []
+    if lang == 'RU':  # выбираем нужный список для шифрования
+        main_list = Caesar_RU
+    elif lang == 'ENG':
+        main_list = Caesar_ENG
+    else:
+        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+    space = 0
+    for index, ch in enumerate(text):
+        if ch.isalpha():
+            mj = main_list.index(ch)
+            kj = main_list.index(key[(index - space) % len(key)])
+            cj = (mj + kj) % len(tabula_recta)
+            out.append(tabula_recta[cj])
+        else:
+            space += 1
+            out.append(' ')
+    return ''.join(out)
+
+
+def decrypt(key, text):
+    result = []
+    space = 0
+    for index, ch in enumerate(text):
+        if ch != ' ':
+            cj = tabula_recta.index(ch)
+            kj = tabula_recta.index(key[(index - space) % len(key)])
+            mj = (cj - kj) % len(tabula_recta)
+            result.append(tabula_recta[mj])
+        else:
+            space += 1
+            result.append(' ')
+    return ''.join(result)
+
+print(encrypt('lemo', 'attackatdawn attackatdawn'))
