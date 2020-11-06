@@ -125,3 +125,4 @@ def decrypt(key, text):
 
 print(encrypt('lemo', 'attackatdawn attackatdawn'))
 print(123)
+print(123)
