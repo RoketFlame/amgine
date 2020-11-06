@@ -124,3 +124,4 @@ def decrypt(key, text):
     return ''.join(result)
 
 print(encrypt('lemo', 'attackatdawn attackatdawn'))
+print(123)
