@@ -1,7 +1,8 @@
-Caesar_RU = [chr(i) for i in range(ord('а'), ord('я') + 1)]
-Caesar_ENG = [chr(i) for i in range(ord('a'), ord('z') + 1)]
-Caesar_RU.insert(6, 'ё')
 # создание списков для шифра цезвря и добавление буквы ё в русский словарь
+ALPHABET_RU = [chr(i) for i in range(ord('а'), ord('я') + 1)]
+ALPHABET_ENG = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+ALPHABET_RU.insert(6, 'ё')
+# создание словарей для азбуки морзе
 MORSE_dict_ENG = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 'f': '..-.',
                   'g': '--.', 'h': '....', 'i': '..', 'j': '.---', 'k': '-.-', 'l': '.-..',
                   'm': '--', 'n': '-.', 'o': '---', 'p': '.--.', 'q': '--.-', 'r': '.-.',
@@ -14,7 +15,6 @@ MORSE_dict_RU = {'а': '.-', 'б': '-...', 'в': '.--', 'г': '--.', 'д': '-..'
                  'ы': '-.--', 'ь': '-..-', 'э': '..-..', 'ю': '..--', 'я': '.-.-'}
 
 
-# создание словарей для азбуки морзе
 # обработка исключений
 class SomethingWrong(Exception):  # базовое исключение
     pass
@@ -28,12 +28,12 @@ class WrongChar(SomethingWrong):  # исключение некорректон�
     pass
 
 
-def caesar_cipher(text, lang='RU', cap=True, shift=0):
+def caesar_cipher(text, shift=0, lang='RU', cap=True):
     out = []
     if lang == 'RU':  # выбираем нужный список для шифрования
-        main_list = Caesar_RU
+        main_list = ALPHABET_RU
     elif lang == 'ENG':
-        main_list = Caesar_ENG
+        main_list = ALPHABET_ENG
     else:
         raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
     if cap:  # проверка на сохранение регистра текста
@@ -64,7 +64,7 @@ def caesar_cipher(text, lang='RU', cap=True, shift=0):
     return ''.join(out)  # функция возвращает уже строку
 
 
-def morse_code(text, lang='RU'):
+def morse_code_encrypt(text, lang='RU'):
     if lang == 'RU':  # Выбираем нужный словарь для шифрования
         main_dict = MORSE_dict_RU
     elif lang == 'ENG':
@@ -73,7 +73,7 @@ def morse_code(text, lang='RU'):
         raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
     out = []
     for i in text:
-        if i in dict:
+        if i in main_dict:
             out.append(main_dict[i])  # если есть значение в словаре - добавляем уже изменненое
         else:
             raise WrongChar('В тексте есть символы из другого языка')
@@ -81,48 +81,63 @@ def morse_code(text, lang='RU'):
     # чтобы при декодировании можно было легко отделить буквы в слове
 
 
-Vigenere_code_ENG = [chr(i) for i in range(ord('a'), ord('z') + 1)]
-Vigenere_code_RU = [chr(i) for i in range(ord('а'), ord('я') + 1)]
-Vigenere_code_RU.insert(6, 'ё')
+def vigenere_code_encrypt(key, text, lang='RU'):
+    # избавление текста и ключа от "лишних" знаков
+    key = ''.join(map(lambda x: x.lower() if x.isalpha() or x == ' ' else '', key))
+    text = ''.join(map(lambda x: x.lower() if x.isalpha() or x == ' ' else '', text))
 
+    out = []  # список, который будет возвращаться
+    space = 0  # счетчик пробелов, чтобы индексы ключа правильно считались
 
-def encrypt(key, text):
-    key = ''.join(map(lambda x: x if x.isalpha() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x if x.isalpha() or x == ' ' else '', text))
-    out = []
     if lang == 'RU':  # выбираем нужный список для шифрования
-        main_list = Caesar_RU
+        main_list = ALPHABET_RU
     elif lang == 'ENG':
-        main_list = Caesar_ENG
+        main_list = ALPHABET_ENG
     else:
         raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
-    space = 0
+    # проверка на наличие всех символов в списке
+    if all([True if x in main_list and y in main_list else False for x, y in zip(text, key)]):
+        raise WrongChar('В тексте или в ключе есть символ другого языка')
+
     for index, ch in enumerate(text):
-        if ch.isalpha():
-            mj = main_list.index(ch)
+        if ch != ' ':  # обработка пробелов
+            mj = main_list.index(ch)  # индекс буквы слова
             kj = main_list.index(key[(index - space) % len(key)])
-            cj = (mj + kj) % len(tabula_recta)
-            out.append(tabula_recta[cj])
+            # индекс ключа с учетом пробелов
+            cj = (mj + kj) % len(main_list)  # индекс уже зашифрованной буквы
+            out.append(main_list[cj])  # добавление зашифрованной буквы в список
         else:
-            space += 1
+            space += 1  # увеличение счетчика пробелов
             out.append(' ')
     return ''.join(out)
 
 
-def decrypt(key, text):
-    result = []
-    space = 0
-    for index, ch in enumerate(text):
-        if ch != ' ':
-            cj = tabula_recta.index(ch)
-            kj = tabula_recta.index(key[(index - space) % len(key)])
-            mj = (cj - kj) % len(tabula_recta)
-            result.append(tabula_recta[mj])
-        else:
-            space += 1
-            result.append(' ')
-    return ''.join(result)
+def vigenere_code_decrypt(key, text, lang='RU'):
+    # избавление текста и ключа от "лишних" знаков
+    key = ''.join(map(lambda x: x if x.isalpha() or x == ' ' else '', key))
+    text = ''.join(map(lambda x: x if x.isalpha() or x == ' ' else '', text))
 
-print(encrypt('lemo', 'attackatdawn attackatdawn'))
-print(123)
-print(123)
+    out = []  # список, который будет возвращаться
+    space = 0  # счетчик пробелов, чтобы индексы ключа правильно считались
+
+    if lang == 'RU':  # выбираем нужный список для шифрования
+        main_list = ALPHABET_RU
+    elif lang == 'ENG':
+        main_list = ALPHABET_ENG
+    else:
+        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+    # проверка на наличие всех символов в списке
+    if all([True if x in main_list and y in main_list else False for x, y in zip(text, key)]):
+        raise WrongChar('В тексте или в ключе есть символ другого языка')
+
+    for index, ch in enumerate(text):  # используем enumerate, чтобы сохранить индексы букв
+        if ch != ' ':  # обработка пробелов
+            cj = main_list.index(ch)  # индекс буквы слова
+            kj = main_list.index(key[(index - space) % len(key)])
+            # индекс ключа с учетом пробелов
+            mj = (cj - kj) % len(main_list)  # индекс уже расшифрованной буквы
+            out.append(main_list[mj])  # добавление расшифрованной буквы в список
+        else:
+            space += 1  # увеличение счетчика пробелов
+            out.append(' ')
+    return ''.join(out)
