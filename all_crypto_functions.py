@@ -83,8 +83,8 @@ def morse_code_encrypt(text, lang='RU'):
 
 def vigenere_code_encrypt(key, text, lang='RU'):
     # избавление текста и ключа от "лишних" знаков
-    key = ''.join(map(lambda x: x.lower() if x.isalpha() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x.lower() if x.isalpha() or x == ' ' else '', text))
+    key = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', key))
+    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', text))
 
     out = []  # список, который будет возвращаться
     space = 0  # счетчик пробелов, чтобы индексы ключа правильно считались
@@ -96,19 +96,19 @@ def vigenere_code_encrypt(key, text, lang='RU'):
     else:
         raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
-    if all([True if x in main_list and y in main_list else False for x, y in zip(text, key)]):
+    if not all([True if x in main_list and y in main_list or x.isalnum() or y.isalnum() else False for x, y in zip(text, key)]):
         raise WrongChar('В тексте или в ключе есть символ другого языка')
 
     for index, ch in enumerate(text):
-        if ch != ' ':  # обработка пробелов
+        if ch.isalpha():  # обработка пробелов и цифр
             mj = main_list.index(ch)  # индекс буквы слова
             kj = main_list.index(key[(index - space) % len(key)])
-            # индекс ключа с учетом пробелов
+            # индекс ключа с учетом 
             cj = (mj + kj) % len(main_list)  # индекс уже зашифрованной буквы
             out.append(main_list[cj])  # добавление зашифрованной буквы в список
         else:
-            space += 1  # увеличение счетчика пробелов
-            out.append(' ')
+            space += 1  # увеличение счетчика
+            out.append(ch)
     return ''.join(out)
 
 
@@ -141,3 +141,6 @@ def vigenere_code_decrypt(key, text, lang='RU'):
             space += 1  # увеличение счетчика пробелов
             out.append(' ')
     return ''.join(out)
+
+
+print(vigenere_code_encrypt('sdf', 'sdgewwef324', lang='ENG'))
