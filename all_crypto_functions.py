@@ -17,7 +17,7 @@ DICT_MORSE_CODE_RU = {'а': '.-', 'б': '-...', 'в': '.--', 'г': '--.', 'д': 
                       'х': '....', 'ц': '-.-.', 'ч': '---.', 'ш': '----', 'щ': '--.-', 'ъ': '.--.-.',
                       'ы': '-.--', 'ь': '-..-', 'э': '..-..', 'ю': '..--', 'я': '.-.-', ' ': '|'}
 
-DICT_MORSE_ENCODE_ENG = {'.-': 'a', '-...': 'b', '-.-.': 'c', '-..': 'd', '.': 'e', '..-.': 'f',
+DICT_MORSE_DECODE_ENG = {'.-': 'a', '-...': 'b', '-.-.': 'c', '-..': 'd', '.': 'e', '..-.': 'f',
                          '--.': 'g',
                          '....': 'h', '..': 'i', '.---': 'j', '-.-': 'k', '.-..': 'l', '--': 'm',
                          '-.': 'n',
@@ -25,7 +25,7 @@ DICT_MORSE_ENCODE_ENG = {'.-': 'a', '-...': 'b', '-.-.': 'c', '-..': 'd', '.': '
                          '..-': 'u',
                          '...-': 'v', '.--': 'w', '--..-': 'x', '-.--': 'y', '--..': 'z', '|': ' '}
 
-DICT_MORSE_ENCODE_RU = {'.-': 'а', '-...': 'б', '.--': 'в', '--.': 'г', '-..': 'д', '.': 'е',
+DICT_MORSE_DECODE_RU = {'.-': 'а', '-...': 'б', '.--': 'в', '--.': 'г', '-..': 'д', '.': 'е',
                         '...-': 'ж',
                         '--..': 'з', '..': 'и', '.---': 'й', '-.-': 'к', '.-..': 'л', '--': 'м',
                         '-.': 'н',
@@ -104,11 +104,11 @@ def morse_code(text, lang='RU'):
     # чтобы при декодировании можно было легко отделить буквы в слове
 
 
-def morse_encode(code, lang='RU'):
+def morse_decode(code, lang='RU'):
     if lang == 'RU':
-        diction = DICT_MORSE_ENCODE_RU
+        diction = DICT_MORSE_DECODE_RU
     elif lang == 'ENG':
-        diction = DICT_MORSE_ENCODE_ENG
+        diction = DICT_MORSE_DECODE_ENG
     out = []
     text = code.split()
     for i in text:
@@ -144,7 +144,7 @@ def vigenere_code(key, text):
     return ''.join(out)
 
 
-def vigenere_encode(key, text):
+def vigenere_decode(key, text):
     result = []
     space = 0
     for index, ch in enumerate(text):
