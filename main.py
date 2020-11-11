@@ -92,23 +92,32 @@ class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):
         self.save_key_btn.setEnabled(True)
 
     def save_text(self):
-        fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
-        f = open(fname, 'w', encoding='utf8')
-        f.write(self.ciphertext)
-        f.close()
+        try:
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'w', encoding='utf8')
+            f.write(self.ciphertext)
+            f.close()
+        except:
+            pass
 
     def load_text(self):
-        fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
-        f = open(fname, 'r', encoding='utf8')
-        self.text = f.read()
-        self.textBrowser_1.setText(self.text)
-        f.close()
+        try:
+            fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'r', encoding='utf8')
+            self.text = f.read()
+            self.textBrowser_1.setText(self.text)
+            f.close()
+        except:
+            pass
 
     def save_settings(self):
-        fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
-        f = open(fname, 'w', encoding='utf8')
-        f.write(f'{self.shift} -{self.cap} -{self.lang}')
-        f.close()
+        try:
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'w', encoding='utf8')
+            f.write(f'{self.shift} -{self.cap} -{self.lang}')
+            f.close()
+        except:
+            pass
 
 
 class StartWindow(QMainWindow, Ui_MainWindow):
