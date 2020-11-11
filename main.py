@@ -24,10 +24,12 @@ class MorseMainWindow(QMainWindow, Ui_Morse_MainWindow):
         self.rb_crypt_decode.setChecked(True)
 
         self.code_btn.clicked.connect(self.code)
-        self.load_btn.clicked.connect(self.load)
-        self.save_btn.clicked.connect(self.save)
+        self.load_btn.clicked.connect(self.load_text)
+        self.save_btn.clicked.connect(self.save_text)
+        self.save_settings_btn.clicked.connect(self.save_settings)
+        self.save_settings_btn.setEnabled(False)
 
-    def load(self):
+    def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
             f = open(fname, 'r', encoding='utf8')
@@ -35,7 +37,7 @@ class MorseMainWindow(QMainWindow, Ui_Morse_MainWindow):
         except:
             pass
 
-    def save(self):
+    def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
@@ -45,15 +47,24 @@ class MorseMainWindow(QMainWindow, Ui_Morse_MainWindow):
 
     def code(self):
         if self.rb_lang_ru.isChecked():
-            language = 'RU'
+            self.lang = 'RU'
         else:
-            language = 'ENG'
+            self.lang = 'ENG'
         text = self.textwid_1.toPlainText()
         if self.rb_crypt_code.isChecked():
-            out_f = morse_encode(text, language)
+            out_f = morse_encode(text, self.lang)
         else:
-            out_f = morse_decode(text, language)
+            out_f = morse_decode(text, self.lang)
         self.textwid_2.setText(out_f)
+        self.save_settings_btn.setEnabled(True)
+
+    def save_settings(self):
+        try:
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'w', encoding='utf8')
+            f.write(f'{self.lang}')
+        except:
+            pass
 
 
 class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):
