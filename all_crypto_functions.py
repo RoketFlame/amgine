@@ -50,6 +50,10 @@ class WrongChar(SomethingWrong):  # исключение некорректон�
     pass
 
 
+class WrongValue(SomethingWrong):
+    pass
+
+
 def caesar_code(text, shift=0, lang='RU', cap=True):
     # выбираем нужный список для шифрования
     if lang == 'RU':
@@ -190,4 +194,31 @@ def vigenere_decode(key, text, lang='RU'):
         else:
             no_alpha_chars += 1  # увеличение счетчика "лишних" символов
             out.append(char)
+    return ''.join(out)
+
+
+def create_dict():
+    d = {' ': ' '}
+    return d
+
+
+def add_value(dct, key, val, automatic=True, mirror=True):
+    if val in dct.values():
+        raise WrongValue('Два символа не могут кодироваться как один')
+    dct[key] = val
+    if mirror:
+        dct[val] = key
+    if automatic:
+        dct[key.upper()] = val.upper()
+        if mirror:
+            dct[val.upper()] = key.upper()
+
+
+def monoalphabetic_code(text, dct, simple=True):
+    if not all([True if char in dct else False for char in text]) or not simple:
+        raise WrongChar('В тексте есть некодируемые символы')
+    out = []
+    for char in text:
+        res = dct.get(char, '')
+        out.append(res)
     return ''.join(out)
