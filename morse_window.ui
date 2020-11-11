@@ -1,32 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Caesar_Main_Window</class>
- <widget class="QMainWindow" name="Caesar_Main_Window">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>659</width>
-    <height>639</height>
+    <width>661</width>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Amgine Caesar</string>
+   <string>Amgine Morse</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextBrowser" name="textBrowser_1">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>251</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="textInteractionFlags">
-     <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextSelectableByMouse</set>
-    </property>
-   </widget>
    <widget class="QPushButton" name="code_btn">
     <property name="geometry">
      <rect>
@@ -40,12 +27,12 @@
      <string>→</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
+   <widget class="QTextBrowser" name="textwid_2">
     <property name="geometry">
      <rect>
       <x>390</x>
       <y>60</y>
-      <width>256</width>
+      <width>261</width>
       <height>192</height>
      </rect>
     </property>
@@ -79,7 +66,7 @@
    <widget class="QPushButton" name="load_btn">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>310</y>
       <width>75</width>
       <height>23</height>
@@ -92,7 +79,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>270</y>
       <width>231</width>
       <height>31</height>
@@ -105,7 +92,7 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>400</x>
       <y>270</y>
       <width>161</width>
       <height>31</height>
@@ -118,7 +105,7 @@
    <widget class="QPushButton" name="save_btn">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>400</x>
       <y>310</y>
       <width>75</width>
       <height>23</height>
@@ -138,10 +125,20 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_6">
+     <item row="0" column="2">
+      <widget class="QRadioButton" name="rb_lang_eng">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Сохранение регистра&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>ENG</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">btn_group_lang</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Дешифровка/шифровка&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -155,40 +152,20 @@
        </attribute>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QRadioButton" name="rb_lang_eng">
+     <item row="1" column="1">
+      <widget class="QRadioButton" name="rb_crypt_decode">
        <property name="text">
-        <string>ENG</string>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">btn_group_lang</string>
-       </attribute>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QRadioButton" name="rb_cap_no">
-       <property name="text">
-        <string>Нет</string>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">btn_group_cap</string>
-       </attribute>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QRadioButton" name="rb_crypt_code">
-       <property name="text">
-        <string>Шифровка</string>
+        <string>Дешифровка</string>
        </property>
        <attribute name="buttonGroup">
         <string notr="true">btn_group_crypt</string>
        </attribute>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QRadioButton" name="rb_crypt_decode">
+     <item row="1" column="2">
+      <widget class="QRadioButton" name="rb_crypt_code">
        <property name="text">
-        <string>Дешифровка</string>
+        <string>Шифровка</string>
        </property>
        <attribute name="buttonGroup">
         <string notr="true">btn_group_crypt</string>
@@ -200,23 +177,6 @@
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Язык шифрования&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Дешифровка/шифровка&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QRadioButton" name="rb_cap_yes">
-       <property name="text">
-        <string>Да</string>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">btn_group_cap</string>
-       </attribute>
       </widget>
      </item>
     </layout>
@@ -234,40 +194,14 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#0000ff;&quot;&gt;Настройки&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="key_line_edit">
+   <widget class="QTextEdit" name="textwid_1">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>550</y>
-      <width>131</width>
-      <height>31</height>
+      <x>10</x>
+      <y>60</y>
+      <width>251</width>
+      <height>191</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>550</y>
-      <width>181</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Ключ шифрования&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="save_key_btn">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>550</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Сохранить ключ</string>
     </property>
    </widget>
   </widget>
@@ -276,7 +210,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>659</width>
+     <width>661</width>
      <height>21</height>
     </rect>
    </property>
@@ -310,8 +244,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="btn_group_lang"/>
   <buttongroup name="btn_group_crypt"/>
-  <buttongroup name="btn_group_cap"/>
+  <buttongroup name="btn_group_lang"/>
  </buttongroups>
 </ui>
