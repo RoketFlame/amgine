@@ -31,9 +31,9 @@ class Ui_Mono_Alpha_Add_Dict(object):
         sizePolicy.setHeightForWidth(self.btn_check.sizePolicy().hasHeightForWidth())
         self.btn_check.setSizePolicy(sizePolicy)
         self.btn_check.setObjectName("btn_check")
-        self.textb_check = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textb_check.setGeometry(QtCore.QRect(120, 111, 411, 191))
-        self.textb_check.setObjectName("textb_check")
+        self.textBrowser_check = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_check.setGeometry(QtCore.QRect(120, 111, 411, 191))
+        self.textBrowser_check.setObjectName("textBrowser_check")
         self.btn_save_dict = QtWidgets.QPushButton(self.centralwidget)
         self.btn_save_dict.setGeometry(QtCore.QRect(450, 320, 81, 41))
         self.btn_save_dict.setObjectName("btn_save_dict")
@@ -102,6 +102,10 @@ class Ui_Mono_Alpha_Add_Dict(object):
         sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
         self.label_5.setSizePolicy(sizePolicy)
         self.label_5.setObjectName("label_5")
+        self.label_error = QtWidgets.QLabel(self.centralwidget)
+        self.label_error.setGeometry(QtCore.QRect(10, 320, 431, 41))
+        self.label_error.setText("")
+        self.label_error.setObjectName("label_error")
         Mono_Alpha_Add_Dict.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Mono_Alpha_Add_Dict)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 537, 21))
@@ -125,11 +129,16 @@ class Ui_Mono_Alpha_Add_Dict(object):
 
     def retranslateUi(self, Mono_Alpha_Add_Dict):
         _translate = QtCore.QCoreApplication.translate
-        Mono_Alpha_Add_Dict.setWindowTitle(_translate("Mono_Alpha_Add_Dict", "Angine"))
+        Mono_Alpha_Add_Dict.setWindowTitle(_translate("Mono_Alpha_Add_Dict", "Amgine"))
         self.label.setText(_translate("Mono_Alpha_Add_Dict", "Ключ"))
         self.label_2.setText(_translate("Mono_Alpha_Add_Dict", "Значение"))
         self.btn_add.setText(_translate("Mono_Alpha_Add_Dict", "Добавить!"))
         self.btn_check.setText(_translate("Mono_Alpha_Add_Dict", "Проверить!"))
+        self.textBrowser_check.setHtml(_translate("Mono_Alpha_Add_Dict", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p></body></html>"))
         self.btn_save_dict.setText(_translate("Mono_Alpha_Add_Dict", "Сохранить"))
         self.label_3.setText(_translate("Mono_Alpha_Add_Dict", "<html><head/><body><p align=\"center\">Автоматическое добавление заглавных букв</p></body></html>"))
         self.rb_cap_on.setText(_translate("Mono_Alpha_Add_Dict", "Да"))

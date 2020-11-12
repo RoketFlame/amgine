@@ -1,10 +1,12 @@
 import sys
+from numpy import transpose
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
-from dialog_login import Ui_Dialog
-from start_window import Ui_MainWindow_Choice
-from login import Ui_MainWindow
-from morse_window import Ui_Morse_MainWindow
-from caesar import Ui_Caesar_Main_Window
+# from dialog_login import Ui_Dialog
+# from start_window import Ui_MainWindow_Choice
+# from login import Ui_MainWindow
+# from morse_window import Ui_Morse_MainWindow
+# from caesar import Ui_Caesar_Main_Window
+# from choice_window import Ui_Central_MainWindow
 from all_crypto_functions import *
 from PyQt5 import uic
 
@@ -16,20 +18,21 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
+
 # class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
 class VigenereMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('vigener.ui', self)
+        uic.loadUi('vigenere.ui', self)
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
 
-        self.key_line_edit.setText('key')
+        self.line_edit_key.setText('key')
 
-        self.code_btn.clicked.connect(self.code)
-        self.load_btn.clicked.connect(self.load_text)
-        self.save_btn.clicked.connect(self.save_text)
+        self.btn_code.clicked.connect(self.code)
+        self.btn_load_text.clicked.connect(self.load_text)
+        self.btn_save_text.clicked.connect(self.save_text)
         self.save_settings_btn.clicked.connect(self.save_settings)
         self.save_settings_btn.setEnabled(False)
 
@@ -37,7 +40,8 @@ class VigenereMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
             f = open(fname, 'r', encoding='utf8')
-            self.textBrowser_1.setText(f.read())
+            self.textBrowser_input.setText(f.read())
+            f.close()
         except:
             pass
 
@@ -45,29 +49,38 @@ class VigenereMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
-            f.write(str(self.textBrowser_2.toPlainText()))
+            f.write(str(self.textBrowser_output.toPlainText()))
+            f.close()
         except:
             pass
 
     def code(self):
-        if self.rb_lang_ru.isChecked():
-            self.lang = 'RU'
-        else:
-            self.lang = 'ENG'
-        text = self.textBrowser_1.toPlainText()
-        self.key = self.key_line_edit.text()
-        if self.rb_crypt_code.isChecked():
-            out_f = vigenere_encode(self.key, text, self.lang)
-        else:
-            out_f = vigenere_decode(self.key, text, self.lang)
-        self.textBrowser_2.setText(out_f)
-        self.save_settings_btn.setEnabled(True)
+        try:
+            if self.rb_lang_ru.isChecked():
+                self.lang = 'RU'
+            else:
+                self.lang = 'ENG'
+            text = self.textBrowser_input.toPlainText()
+            self.key = self.line_edit_key.text()
+            if self.rb_crypt_code.isChecked():
+                self.res = vigenere_encode(self.key, text, self.lang)
+            else:
+                self.res = vigenere_decode(self.key, text, self.lang)
+            self.textBrowser_output.setText(self.res)
+            if text:
+                self.save_settings_btn.setEnabled(True)
+            self.label_error.setText('')
+        except SomethingWrong as s:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">{s}</span></p></body></html>')
 
     def save_settings(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
-            f.write(f'{self.lang}')
+            f.write(f'{self.key} -{self.lang}')
+            f.close()
         except:
             pass
 
@@ -82,17 +95,18 @@ class MorseMainWindow(QMainWindow):
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
 
-        self.code_btn.clicked.connect(self.code)
-        self.load_btn.clicked.connect(self.load_text)
-        self.save_btn.clicked.connect(self.save_text)
-        self.save_settings_btn.clicked.connect(self.save_settings)
-        self.save_settings_btn.setEnabled(False)
+        self.btn_code.clicked.connect(self.code)
+        self.btn_load_text.clicked.connect(self.load_text)
+        self.btn_save_text.clicked.connect(self.save_text)
+        self.btn_save_settings.clicked.connect(self.save_settings)
+        self.btn_save_settings.setEnabled(False)
 
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
             f = open(fname, 'r', encoding='utf8')
-            self.textwid_1.setText(f.read())
+            self.textBrowser_input.setText(f.read())
+            f.close()
         except:
             pass
 
@@ -100,28 +114,37 @@ class MorseMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
-            f.write(str(self.textwid_2.toPlainText()))
+            f.write(str(self.textbrowser_output.toPlainText()))
+            f.close()
         except:
             pass
 
     def code(self):
-        if self.rb_lang_ru.isChecked():
-            self.lang = 'RU'
-        else:
-            self.lang = 'ENG'
-        text = self.textwid_1.toPlainText()
-        if self.rb_crypt_code.isChecked():
-            out_f = morse_encode(text, self.lang)
-        else:
-            out_f = morse_decode(text, self.lang)
-        self.textwid_2.setText(out_f)
-        self.save_settings_btn.setEnabled(True)
+        try:
+            if self.rb_lang_ru.isChecked():
+                self.lang = 'RU'
+            else:
+                self.lang = 'ENG'
+            text = self.textBrowser_input.toPlainText()
+            if self.rb_crypt_code.isChecked():
+                out_f = morse_encode(text, self.lang)
+            else:
+                out_f = morse_decode(text, self.lang)
+            self.textBrowser_output.setText(out_f)
+            if text:
+                self.save_settings_btn.setEnabled(True)
+            self.label_error.setText('')
+        except SomethingWrong as s:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt; '
+                f'color:#ff1500;">{s}</span></p></body></html>')
 
     def save_settings(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
             f.write(f'{self.lang}')
+            f.close()
         except:
             pass
 
@@ -133,36 +156,47 @@ class CaesarMainWindow(QMainWindow):
         uic.loadUi('caesar.ui', self)
         # self.setupUi(self)
 
-        self.code_btn.clicked.connect(self.code)
-        self.load_btn.clicked.connect(self.load_text)
-        self.save_btn.clicked.connect(self.save_text)
-        self.save_key_btn.clicked.connect(self.save_settings)
+        self.btn_code.clicked.connect(self.code)
+        self.btn_load_text.clicked.connect(self.load_text)
+        self.btn_save_text.clicked.connect(self.save_text)
+        self.btn_save_settings.clicked.connect(self.save_settings)
         self.rb_lang_ru.setChecked(True)
         self.rb_cap_yes.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
-        self.key_line_edit.setText('3')
-        self.save_key_btn.setEnabled(False)
+        self.line_edit_key.setText('3')
+        self.btn_save_settings.setEnabled(False)
 
     def code(self):
-        if self.rb_lang_ru.isChecked():
-            self.lang = 'RU'
-        elif self.rb_lang_eng.isChecked():
-            self.lang = 'ENG'
+        try:
+            if self.rb_lang_ru.isChecked():
+                self.lang = 'RU'
+            elif self.rb_lang_eng.isChecked():
+                self.lang = 'ENG'
 
-        if self.rb_cap_yes.isChecked():
-            self.cap = True
-        else:
-            self.cap = False
+            if self.rb_cap_yes.isChecked():
+                self.cap = True
+            else:
+                self.cap = False
 
-        if self.rb_crypt_code.isChecked():
-            self.shift = int(self.key_line_edit.text())
-        else:
-            self.shift = -int(self.key_line_edit.text())
-
-        self.ciphertext = caesar_code(self.textBrowser_1.toPlainText(), shift=self.shift,
-                                      cap=self.cap, lang=self.lang)
-        self.textBrowser_2.setText(self.ciphertext)
-        self.save_key_btn.setEnabled(True)
+            if self.rb_crypt_code.isChecked():
+                self.shift = int(self.line_edit_key.text())
+            else:
+                self.shift = -int(self.line_edit_key.text())
+            text = self.textBrowser_input.toPlainText()
+            self.ciphertext = caesar_code(text, shift=self.shift,
+                                          cap=self.cap, lang=self.lang)
+            self.textBrowser_output.setText(self.ciphertext)
+            if text:
+                self.btn_save_settings.setEnabled(True)
+            self.label_error.setText('')
+        except SomethingWrong as s:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">{s}</span></p></body></html>')
+        except ValueError:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">Ключ должен быть целым числом</span></p></body></html>')
 
     def save_text(self):
         try:
@@ -178,7 +212,7 @@ class CaesarMainWindow(QMainWindow):
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
             f = open(fname, 'r', encoding='utf8')
             self.text = f.read()
-            self.textBrowser_1.setText(self.text)
+            self.textBrowser_input.setText(self.text)
             f.close()
         except:
             pass
@@ -198,7 +232,7 @@ class StartWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.log = LoginDialog()
-        uic.loadUi('login.ui', self)
+        uic.loadUi('start_window.ui', self)
         # self.setupUi(self)
         self.start_login_btn.clicked.connect(self.start)
 
@@ -211,7 +245,7 @@ class StartWindow(QMainWindow):
 class LoginDialog(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi('dialog_login.ui', self)
+        uic.loadUi('login_dialog.ui', self)
         # self.setupUi(self)
         self.buttonBox.clicked.connect(self.run_login)
 
@@ -222,31 +256,31 @@ class LoginDialog(QDialog):
         self.main.show()
 
 
-# class ChoiceWindow(QMainWindow, Ui_MainWindow_Choice):
+# class ChoiceWindow(QMainWindow, Ui_Central_MainWindow):
 class ChoiceWindow(QMainWindow):
     def __init__(self):
         global LOGIN
         super().__init__()
-        uic.loadUi('start_window.ui', self)
+        uic.loadUi('choice_window.ui', self)
         # self.setupUi(self)
         self.start_button.clicked.connect(self.start)
-        self.radioButton.setChecked(True)
 
     def start(self):
         global CIPHER
-        if self.radioButton.isChecked():
+        self.crypt_t = self.type_crypt.currentText()
+        if self.crypt_t == 'Шифр Цезаря':
             CIPHER = 'CAESAR'
             self.ciph = CaesarMainWindow()
             self.ciph.show()
-        elif self.radioButton_2.isChecked():
+        elif self.crypt_t == 'Азбука Морзе':
             CIPHER = 'MORSE'
             self.morse_window = MorseMainWindow()
             self.morse_window.show()
-        elif self.radioButton_3.isChecked():
+        elif self.crypt_t == 'Шифр Вижинера':
             CIPHER = 'VIGENER'
             self.vigenere_window = VigenereMainWindow()
             self.vigenere_window.show()
-        elif self.radioButton_4:
+        elif self.crypt_t == 'Моноалфавит':
             self.monoalph = MonoAlphaMain()
             self.monoalph.show()
 
@@ -276,28 +310,48 @@ class MonoAlphaUseDict(QMainWindow):
         # self.setupUi(self)
         uic.loadUi('mono_use_dict.ui', self)
         self.btn_code.clicked.connect(self.code)
-        self.btn_load.clicked.connect(self.load_dict)
-        self.btn_save.clicked.connect(self.save)
+        self.btn_save_text.clicked.connect(self.save_text)
+        self.btn_load_text.clicked.connect(self.load_text)
+        self.btn_load_dict.clicked.connect(self.load_dict)
         self.success_load_dict.close()
+        self.btn_code.setEnabled(False)
 
     def code(self):
-        self.ciphertext = monoalphabetic_code(self.input_tB.toPlainText(), self.dict)
-        self.out_tB.setText(self.ciphertext)
+        try:
+            self.ciphertext = monoalphabetic_code(self.textBrowser_input.toPlainText(), self.dict)
+            self.textBrowser_output.setText(self.ciphertext)
+            self.label_error.setText('')
+        except SomethingWrong as s:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">{s}</span></p></body></html>')
 
     def load_dict(self):
         try:
-            fname = QFileDialog.getLoadFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
+            fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', 'Текст (*.dct)')[0]
             f = open(fname, 'r', encoding='utf8')
-            self.dict = f.read()
+            self.dict = eval(f.read())
             self.success_load_dict.show()
-        except:
-            pass
+            self.btn_code.setEnabled(True)
+            self.label_error.setText('')
+        except SyntaxError:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">Неверный формат словаря</span></p></body></html>')
 
-    def save(self):
+    def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
             f.write(self.ciphertext)
+        except:
+            pass
+
+    def load_text(self):
+        try:
+            fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'r', encoding='utf8')
+            self.textBrowser_input.setText(f.read())
         except:
             pass
 
@@ -312,20 +366,51 @@ class MonoAlphaAddDict(QMainWindow):
         self.btn_check.clicked.connect(self.check)
         self.btn_save_dict.clicked.connect(self.save)
         self.dict = create_dict()
+        self.btn_save_dict.setEnabled(False)
 
     def add(self):
-        self.key = self.le_key.text()
-        self.value = self.le_value.text()
-        self.mirrior = True if self.rb_mirrior_on.isChecked() else False
-        self.automatic = True if self.rb_cap_on.isChecked() else False
-        add_value(self.dict, self.key, self.value, self.automatic, self.mirrior)
+        try:
+            self.key = self.le_key.text()
+            self.value = self.le_value.text()
+            self.mirrior = True if self.rb_mirrior_on.isChecked() else False
+            self.automatic = True if self.rb_cap_on.isChecked() else False
+            add_value(self.dict, self.key, self.value, self.automatic, self.mirrior)
+            self.le_key.setText('')
+            self.le_value.setText('')
+            self.label_error.setText('')
+        except SomethingWrong as s:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">{s}</span></p></body></html>')
 
     def check(self):
-        self.textb_check.setText(self.dict.__str__())
-        pass
+        out = []
+        res = []
+        for i, key_val in enumerate(self.dict.items()):
+            key, val = key_val
+            if key != ' ':
+                res.append(f'{key} : {val}')
+                if i % 7 == 0:
+                    out.append(res)
+                    res = []
+        for i in range(7 - len(res)):
+            res.append('')
+        out.append(res)
+        out = transpose(out)
+        ready_out = ''
+        for line in out:
+            ready_out += ' | '.join(line) + '\n'
+        self.textBrowser_check.setText(ready_out)
+        self.btn_save_dict.setEnabled(True)
 
     def save(self):
-        pass
+        try:
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.dct)')[0]
+            f = open(fname, 'w', encoding='utf8')
+            f.write(self.dict.__repr__())
+            f.close()
+        except:
+            pass
 
 
 if __name__ == '__main__':

@@ -54,6 +54,10 @@ class WrongValue(SomethingWrong):
     pass
 
 
+class WrongFormatChar(SomethingWrong):
+    pass
+
+
 def caesar_code(text, shift=0, lang='RU', cap=True):
     # выбираем нужный список для шифрования
     if lang == 'RU':
@@ -68,13 +72,13 @@ def caesar_code(text, shift=0, lang='RU', cap=True):
             if char == char.upper():  # определение больших букв
                 char = char.lower()
                 if char in main_list:
-                    res = main_list[(main_list.index(char) + shift) % 33].capitalize()
+                    res = main_list[(main_list.index(char) + shift) % len(main_list)].capitalize()
                     # если буква относится к алфавиту, то применяем к ней шифр
                 else:
                     res = char  # иначе симл остается прежним
             else:  # все тоже самое и для маленьких букв
                 if char in main_list:
-                    res = main_list[(main_list.index(char) + shift) % 33]
+                    res = main_list[(main_list.index(char) + shift) % len(main_list)]
                 else:
                     res = char
             out.append(res)  # добавляем в список полученный результат
@@ -82,7 +86,8 @@ def caesar_code(text, shift=0, lang='RU', cap=True):
     else:  # если регистр текста не важен
         text = text.lower()  # приведение текста к нижнему регистру
         out = list(
-            map(lambda x: main_list[(main_list.index(x) + shift) % 33] if x in main_list else x,
+            map(lambda x: main_list[
+                (main_list.index(x) + shift) % len(main_list)] if x in main_list else x,
                 text))  # преобразовывание символов текста
 
     return ''.join(out)  # функция возвращает уже строку
@@ -149,7 +154,7 @@ def vigenere_encode(key, text, lang='RU'):
         raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
     if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
-        if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in key]):
+        if not all([True if x in main_list else False for x in key]):
             raise WrongChar('В тексте или в ключе есть символ другого языка')
 
     for index, char in enumerate(text):
@@ -205,6 +210,13 @@ def create_dict():
 def add_value(dct, key, val, automatic=True, mirror=True):
     if val in dct.values():
         raise WrongValue('Два символа не могут кодироваться как один')
+    if val.lower() != val or key.lower() != key:
+        raise WrongFormatChar('Буквы должны быть записаны в нижнем регистре')
+    if len(val) != 1 or len(key) != 1:
+        raise WrongFormatChar('Добавить в словарь можно только посимвольно')
+    if key in dct.keys():
+        dct.pop(dct[key])
+        dct.pop(dct[key.upper()])
     dct[key] = val
     if mirror:
         dct[val] = key

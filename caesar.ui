@@ -6,55 +6,67 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>659</width>
-    <height>639</height>
+    <width>648</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Amgine Caesar</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextBrowser" name="textBrowser_1">
+   <widget class="QTextBrowser" name="textBrowser_input">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>60</y>
+      <y>30</y>
       <width>251</width>
-      <height>191</height>
+      <height>211</height>
      </rect>
     </property>
     <property name="textInteractionFlags">
-     <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextSelectableByMouse</set>
+     <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="code_btn">
+   <widget class="QPushButton" name="btn_code">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>140</y>
-      <width>75</width>
-      <height>23</height>
+      <x>270</x>
+      <y>110</y>
+      <width>111</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>→</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
+   <widget class="QTextBrowser" name="textBrowser_output">
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>60</y>
-      <width>256</width>
-      <height>192</height>
+      <y>30</y>
+      <width>251</width>
+      <height>211</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>0</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -67,7 +79,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>20</y>
+      <y>0</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -76,14 +88,20 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Вывод&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="load_btn">
+   <widget class="QPushButton" name="btn_load_text">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>310</y>
-      <width>75</width>
-      <height>23</height>
+      <x>120</x>
+      <y>250</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Загрузка</string>
@@ -93,8 +111,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>270</y>
-      <width>231</width>
+      <y>250</y>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -106,7 +124,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>270</y>
+      <y>250</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -115,14 +133,20 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Сохранить текст&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="save_btn">
+   <widget class="QPushButton" name="btn_save_text">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>310</y>
-      <width>75</width>
-      <height>23</height>
+      <x>500</x>
+      <y>250</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Сохранение</string>
@@ -131,9 +155,9 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>380</y>
-      <width>621</width>
+      <x>10</x>
+      <y>310</y>
+      <width>631</width>
       <height>161</height>
      </rect>
     </property>
@@ -224,9 +248,9 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>339</y>
-      <width>121</width>
+      <x>260</x>
+      <y>280</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -234,11 +258,11 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#0000ff;&quot;&gt;Настройки&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="key_line_edit">
+   <widget class="QLineEdit" name="line_edit_key">
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>550</y>
+      <y>480</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -248,7 +272,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>550</y>
+      <y>480</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -257,17 +281,30 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Ключ шифрования&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="save_key_btn">
+   <widget class="QPushButton" name="btn_save_settings">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>550</y>
+      <y>480</y>
       <width>121</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Сохранить ключ</string>
+     <string>Сохранить настройки</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_error">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>530</y>
+      <width>631</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -276,7 +313,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>659</width>
+     <width>648</width>
      <height>21</height>
     </rect>
    </property>
@@ -290,7 +327,6 @@
    </widget>
    <addaction name="menu"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="info">
    <property name="text">
     <string>Инфо</string>
@@ -310,8 +346,8 @@
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="btn_group_cap"/>
   <buttongroup name="btn_group_lang"/>
   <buttongroup name="btn_group_crypt"/>
-  <buttongroup name="btn_group_cap"/>
  </buttongroups>
 </ui>

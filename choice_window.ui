@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Central_MainWindow</class>
+ <widget class="QMainWindow" name="Central_MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>730</width>
+    <height>564</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AMGINE</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QComboBox" name="type_crypt">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>410</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Шифр Вижинера</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Азбука Морзе</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Шифр Цезаря</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Моноалфавит</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Системы исчисления</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>601</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt; color:#0000ff;&quot;&gt;Какой язык шифрования запустить?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="start_button">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>410</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Запустить!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>731</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>C:/Users/Admin/Desktop/1587219727_22-p-khakkerskie-foni-77.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>type_crypt</zorder>
+   <zorder>label_2</zorder>
+   <zorder>start_button</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>730</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Меню</string>
+    </property>
+    <addaction name="info"/>
+    <addaction name="help"/>
+    <addaction name="history"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="info">
+   <property name="text">
+    <string>Инфо</string>
+   </property>
+  </action>
+  <action name="help">
+   <property name="text">
+    <string>Помощь</string>
+   </property>
+  </action>
+  <action name="history">
+   <property name="text">
+    <string>История поиска</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="phonk_fone_test.qrc"/>
+ </resources>
+ <connections/>
+</ui>
