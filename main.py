@@ -49,7 +49,7 @@ class VigenereMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
-            f.write(str(self.textBrowser_output.toPlainText()))
+            f.write(str(self.ciphertext))
             f.close()
         except:
             pass
@@ -63,10 +63,10 @@ class VigenereMainWindow(QMainWindow):
             text = self.textBrowser_input.toPlainText()
             self.key = self.line_edit_key.text()
             if self.rb_crypt_code.isChecked():
-                self.res = vigenere_encode(self.key, text, self.lang)
+                self.ciphertext = vigenere_encode(self.key, text, self.lang)
             else:
-                self.res = vigenere_decode(self.key, text, self.lang)
-            self.textBrowser_output.setText(self.res)
+                self.ciphertext = vigenere_decode(self.key, text, self.lang)
+            self.textBrowser_output.setText(self.ciphertext)
             if text:
                 self.btn_save_settings.setEnabled(True)
             self.label_error.setText('')
@@ -115,7 +115,6 @@ class MorseMainWindow(QMainWindow):
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
-        self.btn_save_settings.setEnabled(False)
 
     def load_text(self):
         try:
@@ -130,7 +129,7 @@ class MorseMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
-            f.write(str(self.textbrowser_output.toPlainText()))
+            f.write(str(self.ciphertext))
             f.close()
         except:
             pass
@@ -143,10 +142,10 @@ class MorseMainWindow(QMainWindow):
                 self.lang = 'ENG'
             text = self.textBrowser_input.toPlainText()
             if self.rb_crypt_code.isChecked():
-                out_f = morse_encode(text, self.lang)
+                self.ciphertext = morse_encode(text, self.lang)
             else:
-                out_f = morse_decode(text, self.lang)
-            self.textBrowser_output.setText(out_f)
+                self.ciphertext = morse_decode(text, self.lang)
+            self.textBrowser_output.setText(self.ciphertext)
             if text:
                 self.btn_save_settings.setEnabled(True)
             self.label_error.setText('')
@@ -311,6 +310,9 @@ class ChoiceWindow(QMainWindow):
         elif self.crypt_t == 'Моноалфавит':
             self.monoalph = MonoAlphaMain()
             self.monoalph.show()
+        elif self.crypt_t == 'Системы счисления':
+            self.number_systems = NumberSystemsMain()
+            self.number_systems.show()
 
 
 # class MonoAlphaMain(QMainWindow, Ui_Mono_Alpha_Main):
@@ -463,6 +465,52 @@ class MonoAlphaAddDict(QMainWindow):
             f.close()
         except:
             pass
+
+
+# class NumberSystemsMain(QMainWindow, Ui_Number_Systems_Main)
+class NumberSystemsMain(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('number_systems_main.ui', self)
+        self.btn_code.clicked.connect(self.code)
+        self.btn_load_text.clicked.connect(self.load_text)
+        self.btn_save_text.clicked.connect(self.save_text)
+        self.rb_encode.setChecked(True)
+
+    def save_text(self):
+        try:
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'w', encoding='utf8')
+            f.write(self.ciphertext)
+            f.close()
+        except:
+            pass
+
+    def load_text(self):
+        try:
+            fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+            f = open(fname, 'r', encoding='utf8')
+            self.text = f.read()
+            self.textBrowser_input.setText(self.text)
+            f.close()
+        except:
+            pass
+
+    def code(self):
+        try:
+            radix = int(self.type_radix.currentText())
+            text = self.textBrowser_input.toPlainText()
+            print(radix, text)
+            if self.rb_encode.isChecked():
+                self.ciphertext = encode_in_number_systems(text, radix)
+            else:
+                self.ciphertext = decode_in_number_systems(text, radix)
+            self.textBrowser_output.setText(self.ciphertext)
+            self.label_error.setText('')
+        except:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">Неверный формат текста</span></p></body></html>')
 
 
 if __name__ == '__main__':

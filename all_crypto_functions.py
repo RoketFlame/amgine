@@ -172,8 +172,8 @@ def vigenere_encode(key, text, lang='RU'):
 
 def vigenere_decode(key, text, lang='RU'):
     # избавление текста и ключа от "лишних" знаков
-    key = ''.join(map(lambda x: x if x.isalnum() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x if x.isalnum() or x in [' ', '\n'] else '', text))
+    key = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', key))
+    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x in [' ', '\n'] else '', text))
 
     out = []  # список, который будет возвращаться
     no_alpha_chars = 0  # счетчик не алфавитных символов, чтобы индексы ключа правильно считались
@@ -234,3 +234,49 @@ def monoalphabetic_code(text, dct, simple=True):
         res = dct.get(char, '')
         out.append(res)
     return ''.join(out)
+
+
+def encode_in_number_systems(text, radix=16):
+    out = []
+    if radix == 16:
+        len_char = 4
+    elif radix == 8:
+        len_char = 6
+    else:
+        len_char = 8
+    for char in text:
+        res = convert_base(ord(char), radix)
+        out.append('0' * (len_char - len(res)) + res)
+    return ''.join(out)
+
+
+def decode_in_number_systems(text, radix=16):
+    out = []
+    if radix == 16:
+        len_char = 4
+    elif radix == 8:
+        len_char = 6
+    else:
+        len_char = 8
+    text = chunks(list(text), len_char)
+    for char in text:
+        char = ''.join(char)
+        res = chr(int(char, radix))
+        out.append(res)
+    return ''.join(out)
+
+
+def chunks(lst, chunk_size):
+    return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
+
+
+def convert_base(num, to_base=10, from_base=10):
+    if isinstance(num, str):
+        n = int(num, from_base)
+    else:
+        n = int(num)
+    alphabet = "0123456789abcdef"
+    if n < to_base:
+        return alphabet[n]
+    else:
+        return convert_base(n // to_base, to_base) + alphabet[n % to_base]

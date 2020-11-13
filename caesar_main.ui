@@ -352,7 +352,7 @@
   </action>
   <action name="history">
    <property name="text">
-    <string>История поиска</string>
+    <string>История</string>
    </property>
   </action>
  </widget>
@@ -360,7 +360,7 @@
  <connections/>
  <buttongroups>
   <buttongroup name="btn_group_crypt"/>
-  <buttongroup name="btn_group_lang"/>
   <buttongroup name="btn_group_cap"/>
+  <buttongroup name="btn_group_lang"/>
  </buttongroups>
 </ui>

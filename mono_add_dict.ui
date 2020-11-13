@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Amgine</string>
+   <string>Amgine Monoalphabet</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -278,23 +278,23 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Меню</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
+    <addaction name="info"/>
+    <addaction name="help"/>
+    <addaction name="history"/>
    </widget>
    <addaction name="menu"/>
   </widget>
-  <action name="action">
+  <action name="info">
    <property name="text">
-    <string>О программе</string>
+    <string>Инфо</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="history">
    <property name="text">
     <string>История</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="help">
    <property name="text">
     <string>Помощь</string>
    </property>

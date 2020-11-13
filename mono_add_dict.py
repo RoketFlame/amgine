@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Mono_Alpha_Add_Dict(object):
     def setupUi(self, Mono_Alpha_Add_Dict):
         Mono_Alpha_Add_Dict.setObjectName("Mono_Alpha_Add_Dict")
-        Mono_Alpha_Add_Dict.resize(537, 390)
+        Mono_Alpha_Add_Dict.resize(537, 381)
         Mono_Alpha_Add_Dict.setAutoFillBackground(False)
         self.centralwidget = QtWidgets.QWidget(Mono_Alpha_Add_Dict)
         self.centralwidget.setObjectName("centralwidget")
@@ -35,7 +35,7 @@ class Ui_Mono_Alpha_Add_Dict(object):
         self.textBrowser_check.setGeometry(QtCore.QRect(120, 111, 411, 191))
         self.textBrowser_check.setObjectName("textBrowser_check")
         self.btn_save_dict = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_save_dict.setGeometry(QtCore.QRect(450, 320, 81, 41))
+        self.btn_save_dict.setGeometry(QtCore.QRect(450, 310, 81, 41))
         self.btn_save_dict.setObjectName("btn_save_dict")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 0, 241, 61))
@@ -103,7 +103,7 @@ class Ui_Mono_Alpha_Add_Dict(object):
         self.label_5.setSizePolicy(sizePolicy)
         self.label_5.setObjectName("label_5")
         self.label_error = QtWidgets.QLabel(self.centralwidget)
-        self.label_error.setGeometry(QtCore.QRect(10, 320, 431, 41))
+        self.label_error.setGeometry(QtCore.QRect(10, 310, 431, 41))
         self.label_error.setText("")
         self.label_error.setObjectName("label_error")
         Mono_Alpha_Add_Dict.setCentralWidget(self.centralwidget)
@@ -113,15 +113,15 @@ class Ui_Mono_Alpha_Add_Dict(object):
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
         Mono_Alpha_Add_Dict.setMenuBar(self.menubar)
-        self.action = QtWidgets.QAction(Mono_Alpha_Add_Dict)
-        self.action.setObjectName("action")
-        self.action_2 = QtWidgets.QAction(Mono_Alpha_Add_Dict)
-        self.action_2.setObjectName("action_2")
-        self.action_3 = QtWidgets.QAction(Mono_Alpha_Add_Dict)
-        self.action_3.setObjectName("action_3")
-        self.menu.addAction(self.action)
-        self.menu.addAction(self.action_2)
-        self.menu.addAction(self.action_3)
+        self.info = QtWidgets.QAction(Mono_Alpha_Add_Dict)
+        self.info.setObjectName("info")
+        self.history = QtWidgets.QAction(Mono_Alpha_Add_Dict)
+        self.history.setObjectName("history")
+        self.help = QtWidgets.QAction(Mono_Alpha_Add_Dict)
+        self.help.setObjectName("help")
+        self.menu.addAction(self.info)
+        self.menu.addAction(self.help)
+        self.menu.addAction(self.history)
         self.menubar.addAction(self.menu.menuAction())
 
         self.retranslateUi(Mono_Alpha_Add_Dict)
@@ -129,11 +129,11 @@ class Ui_Mono_Alpha_Add_Dict(object):
 
     def retranslateUi(self, Mono_Alpha_Add_Dict):
         _translate = QtCore.QCoreApplication.translate
-        Mono_Alpha_Add_Dict.setWindowTitle(_translate("Mono_Alpha_Add_Dict", "Amgine"))
+        Mono_Alpha_Add_Dict.setWindowTitle(_translate("Mono_Alpha_Add_Dict", "Amgine Monoalphabet"))
         self.label.setText(_translate("Mono_Alpha_Add_Dict", "Ключ"))
         self.label_2.setText(_translate("Mono_Alpha_Add_Dict", "Значение"))
-        self.btn_add.setText(_translate("Mono_Alpha_Add_Dict", "Добавить!"))
-        self.btn_check.setText(_translate("Mono_Alpha_Add_Dict", "Проверить!"))
+        self.btn_add.setText(_translate("Mono_Alpha_Add_Dict", "Добавить"))
+        self.btn_check.setText(_translate("Mono_Alpha_Add_Dict", "Проверить"))
         self.textBrowser_check.setHtml(_translate("Mono_Alpha_Add_Dict", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -148,6 +148,6 @@ class Ui_Mono_Alpha_Add_Dict(object):
         self.rb_mirror_off.setText(_translate("Mono_Alpha_Add_Dict", "Нет"))
         self.label_5.setText(_translate("Mono_Alpha_Add_Dict", "Проверить алфавит"))
         self.menu.setTitle(_translate("Mono_Alpha_Add_Dict", "Меню"))
-        self.action.setText(_translate("Mono_Alpha_Add_Dict", "О программе"))
-        self.action_2.setText(_translate("Mono_Alpha_Add_Dict", "История"))
-        self.action_3.setText(_translate("Mono_Alpha_Add_Dict", "Помощь"))
+        self.info.setText(_translate("Mono_Alpha_Add_Dict", "Инфо"))
+        self.history.setText(_translate("Mono_Alpha_Add_Dict", "История"))
+        self.help.setText(_translate("Mono_Alpha_Add_Dict", "Помощь"))

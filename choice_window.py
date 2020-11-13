@@ -62,11 +62,10 @@ class Ui_Central_MainWindow(object):
         self.type_crypt.setItemText(1, _translate("Central_MainWindow", "Азбука Морзе"))
         self.type_crypt.setItemText(2, _translate("Central_MainWindow", "Шифр Цезаря"))
         self.type_crypt.setItemText(3, _translate("Central_MainWindow", "Моноалфавит"))
-        self.type_crypt.setItemText(4, _translate("Central_MainWindow", "Системы исчисления"))
+        self.type_crypt.setItemText(4, _translate("Central_MainWindow", "Системы счисления"))
         self.label_2.setText(_translate("Central_MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:26pt; color:#0000ff;\">Какой язык шифрования запустить?</span></p></body></html>"))
         self.start_button.setText(_translate("Central_MainWindow", "Запустить!"))
         self.menu.setTitle(_translate("Central_MainWindow", "Меню"))
         self.info.setText(_translate("Central_MainWindow", "Инфо"))
         self.help.setText(_translate("Central_MainWindow", "Помощь"))
         self.history.setText(_translate("Central_MainWindow", "История поиска"))
-
