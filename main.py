@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
 from all_crypto_functions import *
 from PyQt5 import uic
 
-LOGIN = ''
+LOGIN = 'USER'
 CIPHER = ''
 
 
