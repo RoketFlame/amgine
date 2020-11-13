@@ -32,8 +32,9 @@ class VigenereMainWindow(QMainWindow):
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
-        self.save_settings_btn.clicked.connect(self.save_settings)
-        self.save_settings_btn.setEnabled(False)
+        self.btn_save_settings.clicked.connect(self.save_settings)
+        self.btn_save_settings.setEnabled(False)
+        self.btn_load_settings.clicked.connect(self.load_settings)
 
     def load_text(self):
         try:
@@ -67,7 +68,7 @@ class VigenereMainWindow(QMainWindow):
                 self.res = vigenere_decode(self.key, text, self.lang)
             self.textBrowser_output.setText(self.res)
             if text:
-                self.save_settings_btn.setEnabled(True)
+                self.btn_save_settings.setEnabled(True)
             self.label_error.setText('')
         except SomethingWrong as s:
             self.label_error.setText(
@@ -76,12 +77,29 @@ class VigenereMainWindow(QMainWindow):
 
     def save_settings(self):
         try:
-            fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.stg)')[0]
             f = open(fname, 'w', encoding='utf8')
             f.write(f'{self.key} -{self.lang}')
             f.close()
         except:
             pass
+
+    def load_settings(self):
+        try:
+            fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.stg)')[0]
+            f = open(fname, 'r', encoding='utf8')
+            settings = f.read().split(' -')
+            key, lang = settings
+            self.line_edit_key.setText(key)
+            if lang == 'ENG':
+                self.rb_lang_eng.setChecked(True)
+            else:
+                self.rb_lang_ru.setChecked(True)
+            f.close()
+        except:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">Неверный формат настроек!</span></p></body></html>')
 
 
 # class MorseMainWindow(QMainWindow, Ui_Morse_MainWindow):
@@ -97,7 +115,6 @@ class MorseMainWindow(QMainWindow):
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
-        self.btn_save_settings.clicked.connect(self.save_settings)
         self.btn_save_settings.setEnabled(False)
 
     def load_text(self):
@@ -138,15 +155,6 @@ class MorseMainWindow(QMainWindow):
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt; '
                 f'color:#ff1500;">{s}</span></p></body></html>')
 
-    def save_settings(self):
-        try:
-            fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
-            f = open(fname, 'w', encoding='utf8')
-            f.write(f'{self.lang}')
-            f.close()
-        except:
-            pass
-
 
 # class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):
 class CaesarMainWindow(QMainWindow):
@@ -159,6 +167,7 @@ class CaesarMainWindow(QMainWindow):
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
         self.btn_save_settings.clicked.connect(self.save_settings)
+        self.btn_load_settings.clicked.connect(self.load_settings)
         self.rb_lang_ru.setChecked(True)
         self.rb_cap_yes.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
@@ -218,12 +227,32 @@ class CaesarMainWindow(QMainWindow):
 
     def save_settings(self):
         try:
-            fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+            fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.stg)')[0]
             f = open(fname, 'w', encoding='utf8')
             f.write(f'{self.shift} -{self.cap} -{self.lang}')
             f.close()
         except:
             pass
+
+    def load_settings(self):
+        try:
+            fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.stg)')[0]
+            f = open(fname, 'r', encoding='utf8')
+            settings = f.read().split(' -')
+            shift, cap, lang = settings
+            self.line_edit_key.setText(shift)
+            if bool(cap):
+                self.rb_cap_yes.setChecked(True)
+            else:
+                self.rb_cap_no.setChecked(True)
+            if lang == 'ENG':
+                self.rb_lang_eng.setChecked(True)
+            else:
+                self.rb_lang_ru.setChecked(True)
+        except:
+            self.label_error.setText(
+                f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
+                f' color:#ff1500;">Неверный формат настроек!</span></p></body></html>')
 
 
 # class StartWindow(QMainWindow, Ui_MainWindow):

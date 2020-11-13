@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>597</height>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -235,26 +235,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>530</y>
+      <y>490</y>
       <width>631</width>
-      <height>31</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_save_settings">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>490</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Сохранить настройки</string>
     </property>
    </widget>
   </widget>
