@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>537</width>
-    <height>390</height>
+    <height>381</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,7 +73,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Добавить!</string>
+     <string>Добавить</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_check">
@@ -92,7 +92,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Проверить!</string>
+     <string>Проверить</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textBrowser_check">
@@ -116,7 +116,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>320</y>
+      <y>310</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -255,7 +255,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>320</y>
+      <y>310</y>
       <width>431</width>
       <height>41</height>
      </rect>

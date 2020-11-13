@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>648</width>
-    <height>597</height>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -104,7 +104,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Загрузка</string>
+     <string>Загрузить</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -149,7 +149,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Сохранение</string>
+     <string>Сохранить</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget">
@@ -346,8 +346,8 @@
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="btn_group_crypt"/>
   <buttongroup name="btn_group_cap"/>
   <buttongroup name="btn_group_lang"/>
-  <buttongroup name="btn_group_crypt"/>
  </buttongroups>
 </ui>

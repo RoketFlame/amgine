@@ -18,13 +18,12 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
-
 # class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
 class VigenereMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('vigenere.ui', self)
+        uic.loadUi('vigenere_main.ui', self)
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
 
@@ -90,7 +89,7 @@ class MorseMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('morse_window.ui', self)
+        uic.loadUi('morse_main.ui', self)
 
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
@@ -132,7 +131,7 @@ class MorseMainWindow(QMainWindow):
                 out_f = morse_decode(text, self.lang)
             self.textBrowser_output.setText(out_f)
             if text:
-                self.save_settings_btn.setEnabled(True)
+                self.btn_save_settings.setEnabled(True)
             self.label_error.setText('')
         except SomethingWrong as s:
             self.label_error.setText(
@@ -153,7 +152,7 @@ class MorseMainWindow(QMainWindow):
 class CaesarMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('caesar.ui', self)
+        uic.loadUi('caesar_main.ui', self)
         # self.setupUi(self)
 
         self.btn_code.clicked.connect(self.code)
@@ -313,8 +312,28 @@ class MonoAlphaUseDict(QMainWindow):
         self.btn_save_text.clicked.connect(self.save_text)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_load_dict.clicked.connect(self.load_dict)
+        self.btn_check.clicked.connect(self.check)
         self.success_load_dict.close()
         self.btn_code.setEnabled(False)
+        self.btn_check.setEnabled(False)
+
+    def check(self):
+        out = []
+        res = []
+        for i, key_val in enumerate(list(self.dict.items())[2:]):
+            key, val = key_val
+            res.append(f'{key} : {val}')
+            if i % 7 == 6:
+                out.append(res)
+                res = []
+        for i in range(7 - len(res)):
+            res.append('')
+        out.append(res)
+        out = transpose(out)
+        ready_out = ''
+        for line in out:
+            ready_out += ' | '.join(line) + '\n'
+        self.textBrowser_check.setText(ready_out)
 
     def code(self):
         try:
@@ -333,11 +352,14 @@ class MonoAlphaUseDict(QMainWindow):
             self.dict = eval(f.read())
             self.success_load_dict.show()
             self.btn_code.setEnabled(True)
+            self.btn_check.setEnabled(True)
             self.label_error.setText('')
         except SyntaxError:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
-                f' color:#ff1500;">Неверный формат словаря</span></p></body></html>')
+                f' color:#ff1500;">Неверный формат словаря!</span></p></body></html>')
+        except:
+            pass
 
     def save_text(self):
         try:
@@ -386,22 +408,23 @@ class MonoAlphaAddDict(QMainWindow):
     def check(self):
         out = []
         res = []
-        for i, key_val in enumerate(self.dict.items()):
+        for i, key_val in enumerate(list(self.dict.items())[2:]):
             key, val = key_val
-            if key != ' ':
-                res.append(f'{key} : {val}')
-                if i % 7 == 0:
-                    out.append(res)
-                    res = []
-        for i in range(7 - len(res)):
-            res.append('')
-        out.append(res)
+            res.append(f'{key} : {val}')
+            if i % 7 == 6:
+                out.append(res)
+                res = []
+        if res:
+            for i in range(7 - len(res)):
+                res.append('')
+            out.append(res)
         out = transpose(out)
         ready_out = ''
         for line in out:
             ready_out += ' | '.join(line) + '\n'
         self.textBrowser_check.setText(ready_out)
-        self.btn_save_dict.setEnabled(True)
+        if len(self.dict) > 2:
+            self.btn_save_dict.setEnabled(True)
 
     def save(self):
         try:

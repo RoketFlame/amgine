@@ -65,7 +65,7 @@ def caesar_code(text, shift=0, lang='RU', cap=True):
     elif lang == 'ENG':
         main_list = ALPHABET_ENG
     else:
-        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+        raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     out = []
     if cap:  # проверка на сохранение регистра текста
         for char in text:
@@ -100,9 +100,9 @@ def morse_encode(text, lang='RU'):
     elif lang == 'ENG':
         main_dict = DICT_MORSE_ENCODE_ENG
     else:
-        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+        raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     out = []
-    text = ' '.join(text.split())  # убираем лишние пробелы
+    text = ' '.join(text.split(' '))  # убираем лишние пробелы
     for char in text:
         if char.lower() in main_dict:
             out.append(
@@ -122,9 +122,9 @@ def morse_decode(text, lang='RU'):
     elif lang == 'ENG':
         main_dict = DICT_MORSE_DECODE_ENG
     else:
-        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+        raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     out = []
-    text = [word.split() for word in text.split('   ')]  # разделение шифра на буквы
+    text = [word.split(' ') for word in text.split('   ')]  # разделение шифра на буквы
     for word in text:
         word_res = []
         for char in word:
@@ -141,7 +141,7 @@ def morse_decode(text, lang='RU'):
 def vigenere_encode(key, text, lang='RU'):
     # избавление текста и ключа от "лишних" знаков
     key = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', text))
+    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x in [' ', '\n'] else '', text))
 
     out = []  # список, который будет возвращаться
     no_alpha_chars = 0  # счетчик не алфавитных символов, чтобы индексы ключа правильно считались
@@ -151,11 +151,11 @@ def vigenere_encode(key, text, lang='RU'):
     elif lang == 'ENG':
         main_list = ALPHABET_ENG
     else:
-        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+        raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
     if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
         if not all([True if x in main_list else False for x in key]):
-            raise WrongChar('В тексте или в ключе есть символ другого языка')
+            raise WrongChar('В тексте или в ключе есть символ другого языка!')
 
     for index, char in enumerate(text):
         if char.isalpha():  # обработка толкько словарных символов
@@ -173,7 +173,7 @@ def vigenere_encode(key, text, lang='RU'):
 def vigenere_decode(key, text, lang='RU'):
     # избавление текста и ключа от "лишних" знаков
     key = ''.join(map(lambda x: x if x.isalnum() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x if x.isalnum() or x == ' ' else '', text))
+    text = ''.join(map(lambda x: x if x.isalnum() or x in [' ', '\n'] else '', text))
 
     out = []  # список, который будет возвращаться
     no_alpha_chars = 0  # счетчик не алфавитных символов, чтобы индексы ключа правильно считались
@@ -183,11 +183,11 @@ def vigenere_decode(key, text, lang='RU'):
     elif lang == 'ENG':
         main_list = ALPHABET_ENG
     else:
-        raise WrongLanguage('Введён неверный язык')  # исключение, если нет такого языка
+        raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
     if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
         if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in key]):
-            raise WrongChar('В тексте или в ключе есть символ другого языка')
+            raise WrongChar('В тексте или в ключе есть символ другого языка!')
 
     for index, char in enumerate(text):  # используем enumerate, чтобы сохранить индексы букв
         if char.isalpha():  # обработка толкько словарных символов
@@ -203,17 +203,17 @@ def vigenere_decode(key, text, lang='RU'):
 
 
 def create_dict():
-    d = {' ': ' '}
+    d = {' ': ' ', '\n': '\n'}
     return d
 
 
 def add_value(dct, key, val, automatic=True, mirror=True):
     if val in dct.values():
-        raise WrongValue('Два символа не могут кодироваться как один')
+        raise WrongValue('Два символа не могут кодироваться как один!')
     if val.lower() != val or key.lower() != key:
-        raise WrongFormatChar('Буквы должны быть записаны в нижнем регистре')
+        raise WrongFormatChar('Буквы должны быть записаны в нижнем регистре!')
     if len(val) != 1 or len(key) != 1:
-        raise WrongFormatChar('Добавить в словарь можно только посимвольно')
+        raise WrongFormatChar('Добавить в словарь можно только посимвольно!')
     if key in dct.keys():
         dct.pop(dct[key])
         dct.pop(dct[key.upper()])
@@ -228,7 +228,7 @@ def add_value(dct, key, val, automatic=True, mirror=True):
 
 def monoalphabetic_code(text, dct, simple=True):
     if not all([True if char in dct else False for char in text]) or not simple:
-        raise WrongChar('В тексте есть некодируемые символы')
+        raise WrongChar('В тексте есть некодируемые символы!')
     out = []
     for char in text:
         res = dct.get(char, '')

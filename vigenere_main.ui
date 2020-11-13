@@ -208,7 +208,7 @@
      <rect>
       <x>10</x>
       <y>250</y>
-      <width>231</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -232,7 +232,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Загрузка</string>
+     <string>Загрузить</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_save_text">
@@ -251,7 +251,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Сохранение</string>
+     <string>Сохранить</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -259,7 +259,7 @@
      <rect>
       <x>390</x>
       <y>250</y>
-      <width>161</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -319,7 +319,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="btn_group_lang"/>
   <buttongroup name="btn_group_crypt"/>
+  <buttongroup name="btn_group_lang"/>
  </buttongroups>
 </ui>

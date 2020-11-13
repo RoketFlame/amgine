@@ -22,24 +22,15 @@
     <list default="true" id="76a239d5-a5ab-46d5-bd61-f09f5ed6c74e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/all_crypto_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_crypto_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caesar.py" beforeDir="false" afterPath="$PROJECT_DIR$/caesar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caesar.ui" beforeDir="false" afterPath="$PROJECT_DIR$/caesar.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dialog_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dialog_login.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caesar.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caesar.ui" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_add_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_add_dict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mono_add_dict.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mono_add_dict.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_use_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_use_dict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mono_use_dict.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mono_use_dict.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morse_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/morse_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_window.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_window.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/time.py" beforeDir="false" afterPath="$PROJECT_DIR$/time.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vigenere.py" beforeDir="false" afterPath="$PROJECT_DIR$/vigenere.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vigenere.ui" beforeDir="false" afterPath="$PROJECT_DIR$/vigenere.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/morse_window.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/morse_window.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vigenere.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vigenere.ui" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,43 +144,55 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1604954250193">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604954250193" />
-    <state width="1579" height="150" key="GridCell.Tab.0.bottom" timestamp="1605213421913">
+    <state width="1579" height="94" key="GridCell.Tab.0.bottom" timestamp="1605256947940">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="150" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605213421913" />
-    <state width="1579" height="150" key="GridCell.Tab.0.center" timestamp="1605213421913">
+    <state width="1579" height="94" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605256947940" />
+    <state width="1579" height="94" key="GridCell.Tab.0.center" timestamp="1605256947940">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="150" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1605213421913" />
-    <state width="1579" height="150" key="GridCell.Tab.0.left" timestamp="1605213421913">
+    <state width="1579" height="94" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1605256947940" />
+    <state width="1579" height="94" key="GridCell.Tab.0.left" timestamp="1605256947939">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="150" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1605213421913" />
-    <state width="1579" height="150" key="GridCell.Tab.0.right" timestamp="1605213421913">
+    <state width="1579" height="94" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1605256947939" />
+    <state width="1579" height="94" key="GridCell.Tab.0.right" timestamp="1605256947940">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="150" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1605213421913" />
-    <state width="1579" height="275" key="GridCell.Tab.1.bottom" timestamp="1605211438409">
+    <state width="1579" height="94" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1605256947940" />
+    <state width="1579" height="70" key="GridCell.Tab.1.bottom" timestamp="1605251678766">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605211438409" />
-    <state width="1579" height="275" key="GridCell.Tab.1.center" timestamp="1605211438409">
+    <state width="1579" height="70" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605251678766" />
+    <state width="1579" height="70" key="GridCell.Tab.1.center" timestamp="1605251678766">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1605211438409" />
-    <state width="1579" height="275" key="GridCell.Tab.1.left" timestamp="1605211438409">
+    <state width="1579" height="70" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1605251678766" />
+    <state width="1579" height="70" key="GridCell.Tab.1.left" timestamp="1605251678766">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1605211438409" />
-    <state width="1579" height="275" key="GridCell.Tab.1.right" timestamp="1605211438409">
+    <state width="1579" height="70" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1605251678766" />
+    <state width="1579" height="70" key="GridCell.Tab.1.right" timestamp="1605251678766">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1605211438409" />
+    <state width="1579" height="70" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1605251678766" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>381</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
