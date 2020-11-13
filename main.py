@@ -1,12 +1,14 @@
 import sys
 from numpy import transpose
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
-# from dialog_login import Ui_Dialog
-# from start_window import Ui_MainWindow_Choice
-# from login import Ui_MainWindow
-# from morse_window import Ui_Morse_MainWindow
-# from caesar import Ui_Caesar_Main_Window
+# from start_window import Ui_Start_Window
+# from login_dialog import Ui_Dialog
 # from choice_window import Ui_Central_MainWindow
+# from morse_main import Ui_Morse_Main_Window
+# from caesar_main import Ui_Caesar_Main_Window
+# from number_systems_main import Ui_Number_Systems_Main
+# from help_window import Ui_Help_Window
+# from info_window import Ui_Info_Window
 from all_crypto_functions import *
 from PyQt5 import uic
 
@@ -18,22 +20,115 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
+# class StartWindow(QMainWindow, Ui_MainWindow):
+class StartWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.log = LoginDialog()
+        uic.loadUi('start_window.ui', self)
+        # self.setupUi(self)
+        self.start_login_btn.clicked.connect(self.start)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
+        pass
+
+    def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
+        pass
+
+    def show_history(self):
+        pass
+
+    def start(self):
+        self.log.show()
+        self.close()
+
+
+# class LoginDialog(QDialog, Ui_Dialog):
+class LoginDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('login_dialog.ui', self)
+        # self.setupUi(self)
+        self.buttonBox.clicked.connect(self.run_login)
+
+    def run_login(self):
+        global LOGIN
+        LOGIN = self.lineEdit.text()
+        self.main = ChoiceWindow()
+        self.main.show()
+
+
+# class ChoiceWindow(QMainWindow, Ui_Central_MainWindow):
+class ChoiceWindow(QMainWindow):
+    def __init__(self):
+        global LOGIN
+        super().__init__()
+        uic.loadUi('choice_window.ui', self)
+        # self.setupUi(self)
+        self.start_button.clicked.connect(self.start)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
+        pass
+
+    def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
+        pass
+
+    def show_history(self):
+        pass
+
+    def start(self):
+        global CIPHER
+        self.crypt_t = self.type_crypt.currentText()
+        if self.crypt_t == 'Шифр Цезаря':
+            CIPHER = 'CAESAR'
+            self.ciph = CaesarMainWindow()
+            self.ciph.show()
+        elif self.crypt_t == 'Азбука Морзе':
+            CIPHER = 'MORSE'
+            self.morse_window = MorseMainWindow()
+            self.morse_window.show()
+        elif self.crypt_t == 'Шифр Вижинера':
+            CIPHER = 'VIGENER'
+            self.vigenere_window = VigenereMainWindow()
+            self.vigenere_window.show()
+        elif self.crypt_t == 'Моноалфавит':
+            self.monoalph = MonoAlphaMain()
+            self.monoalph.show()
+        elif self.crypt_t == 'Системы счисления':
+            self.number_systems = NumberSystemsMain()
+            self.number_systems.show()
+
+
 # class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
 class VigenereMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
         uic.loadUi('vigenere_main.ui', self)
+
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
-
+        self.btn_save_settings.setEnabled(False)
         self.line_edit_key.setText('key')
 
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
         self.btn_save_settings.clicked.connect(self.save_settings)
-        self.btn_save_settings.setEnabled(False)
         self.btn_load_settings.clicked.connect(self.load_settings)
 
         self.info.triggered.connect(self.show_info)
@@ -41,9 +136,13 @@ class VigenereMainWindow(QMainWindow):
         self.history.triggered.connect(self.show_history)
 
     def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
         pass
 
     def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
         pass
 
     def show_history(self):
@@ -109,6 +208,7 @@ class VigenereMainWindow(QMainWindow):
             else:
                 self.rb_lang_ru.setChecked(True)
             f.close()
+            self.label_error.setText('')
         except:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
@@ -134,9 +234,13 @@ class MorseMainWindow(QMainWindow):
         self.history.triggered.connect(self.show_history)
 
     def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
         pass
 
     def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
         pass
 
     def show_history(self):
@@ -172,8 +276,6 @@ class MorseMainWindow(QMainWindow):
             else:
                 self.ciphertext = morse_decode(text, self.lang)
             self.textBrowser_output.setText(self.ciphertext)
-            if text:
-                self.btn_save_settings.setEnabled(True)
             self.label_error.setText('')
         except SomethingWrong as s:
             self.label_error.setText(
@@ -193,6 +295,7 @@ class CaesarMainWindow(QMainWindow):
         self.btn_save_text.clicked.connect(self.save_text)
         self.btn_save_settings.clicked.connect(self.save_settings)
         self.btn_load_settings.clicked.connect(self.load_settings)
+
         self.rb_lang_ru.setChecked(True)
         self.rb_cap_yes.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
@@ -204,9 +307,13 @@ class CaesarMainWindow(QMainWindow):
         self.history.triggered.connect(self.show_history)
 
     def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
         pass
 
     def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
         pass
 
     def show_history(self):
@@ -286,95 +393,12 @@ class CaesarMainWindow(QMainWindow):
                 self.rb_lang_eng.setChecked(True)
             else:
                 self.rb_lang_ru.setChecked(True)
+            self.label_error.setText('')
+            f.close()
         except:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">Неверный формат настроек!</span></p></body></html>')
-
-
-# class StartWindow(QMainWindow, Ui_MainWindow):
-class StartWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.log = LoginDialog()
-        uic.loadUi('start_window.ui', self)
-        # self.setupUi(self)
-        self.start_login_btn.clicked.connect(self.start)
-        self.info.triggered.connect(self.show_info)
-        self.help.triggered.connect(self.show_help)
-        self.history.triggered.connect(self.show_history)
-
-    def show_info(self):
-        pass
-
-    def show_help(self):
-        pass
-
-    def show_history(self):
-        pass
-
-    def start(self):
-        self.log.show()
-        self.close()
-
-
-# class LoginDialog(QDialog, Ui_Dialog):
-class LoginDialog(QDialog):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi('login_dialog.ui', self)
-        # self.setupUi(self)
-        self.buttonBox.clicked.connect(self.run_login)
-
-    def run_login(self):
-        global LOGIN
-        LOGIN = self.lineEdit.text()
-        self.main = ChoiceWindow()
-        self.main.show()
-
-
-# class ChoiceWindow(QMainWindow, Ui_Central_MainWindow):
-class ChoiceWindow(QMainWindow):
-    def __init__(self):
-        global LOGIN
-        super().__init__()
-        uic.loadUi('choice_window.ui', self)
-        # self.setupUi(self)
-        self.start_button.clicked.connect(self.start)
-        self.info.triggered.connect(self.show_info)
-        self.help.triggered.connect(self.show_help)
-        self.history.triggered.connect(self.show_history)
-
-    def show_info(self):
-        pass
-
-    def show_help(self):
-        pass
-
-    def show_history(self):
-        pass
-
-    def start(self):
-        global CIPHER
-        self.crypt_t = self.type_crypt.currentText()
-        if self.crypt_t == 'Шифр Цезаря':
-            CIPHER = 'CAESAR'
-            self.ciph = CaesarMainWindow()
-            self.ciph.show()
-        elif self.crypt_t == 'Азбука Морзе':
-            CIPHER = 'MORSE'
-            self.morse_window = MorseMainWindow()
-            self.morse_window.show()
-        elif self.crypt_t == 'Шифр Вижинера':
-            CIPHER = 'VIGENER'
-            self.vigenere_window = VigenereMainWindow()
-            self.vigenere_window.show()
-        elif self.crypt_t == 'Моноалфавит':
-            self.monoalph = MonoAlphaMain()
-            self.monoalph.show()
-        elif self.crypt_t == 'Системы счисления':
-            self.number_systems = NumberSystemsMain()
-            self.number_systems.show()
 
 
 # class MonoAlphaMain(QMainWindow, Ui_Mono_Alpha_Main):
@@ -414,9 +438,13 @@ class MonoAlphaUseDict(QMainWindow):
         self.history.triggered.connect(self.show_history)
 
     def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
         pass
 
     def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
         pass
 
     def show_history(self):
@@ -459,6 +487,7 @@ class MonoAlphaUseDict(QMainWindow):
             self.btn_code.setEnabled(True)
             self.btn_check.setEnabled(True)
             self.label_error.setText('')
+            f.close()
         except SyntaxError:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
@@ -471,6 +500,7 @@ class MonoAlphaUseDict(QMainWindow):
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
             f.write(self.ciphertext)
+            f.close()
         except:
             pass
 
@@ -479,6 +509,7 @@ class MonoAlphaUseDict(QMainWindow):
             fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'r', encoding='utf8')
             self.textBrowser_input.setText(f.read())
+            f.close()
         except:
             pass
 
@@ -499,9 +530,13 @@ class MonoAlphaAddDict(QMainWindow):
         self.history.triggered.connect(self.show_history)
 
     def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
         pass
 
     def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
         pass
 
     def show_history(self):
@@ -558,6 +593,7 @@ class NumberSystemsMain(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('number_systems_main.ui', self)
+        # self.setupUi(self)
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
@@ -567,9 +603,13 @@ class NumberSystemsMain(QMainWindow):
         self.history.triggered.connect(self.show_history)
 
     def show_info(self):
+        self.info_window = InfoWindow()
+        self.info_window.show()
         pass
 
     def show_help(self):
+        self.help_window = HelpWindow()
+        self.help_window.show()
         pass
 
     def show_history(self):
@@ -611,8 +651,20 @@ class NumberSystemsMain(QMainWindow):
                 f' color:#ff1500;">Неверный формат текста!</span></p></body></html>')
 
 
+# class InfoWindow(QMainWindow, Ui_Info_Window):
 class InfoWindow(QMainWindow):
-    pass
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('info_window.ui', self)
+        # self.setupUi(self)
+
+
+# class HelpWindow(QMainWindow, Ui_Help_Window):
+class HelpWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('help_window.ui', self)
+        # self.setupUi(self)
 
 
 if __name__ == '__main__':
