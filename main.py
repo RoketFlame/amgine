@@ -638,7 +638,6 @@ class NumberSystemsMain(QMainWindow):
         try:
             radix = int(self.type_radix.currentText())
             text = self.textBrowser_input.toPlainText()
-            print(radix, text)
             if self.rb_encode.isChecked():
                 self.ciphertext = encode_in_number_systems(text, radix)
             else:

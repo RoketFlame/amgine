@@ -215,8 +215,8 @@ def add_value(dct, key, val, automatic=True, mirror=True):
     if len(val) != 1 or len(key) != 1:
         raise WrongFormatChar('Добавить в словарь можно только посимвольно!')
     if key in dct.keys():
-        dct.pop(dct[key], None)
-        dct.pop(dct[key.upper()], None)
+        dct.pop(key, None)
+        dct.pop(key.upper(), None)
     dct[key] = val
     if mirror:
         dct[val] = key

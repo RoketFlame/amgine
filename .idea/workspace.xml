@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76a239d5-a5ab-46d5-bd61-f09f5ed6c74e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/all_crypto_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_crypto_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/help_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/help_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/info_window.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morse_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/morse_main.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/start_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/time.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
