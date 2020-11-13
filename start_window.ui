@@ -6,41 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>453</width>
-    <height>253</height>
+    <width>481</width>
+    <height>192</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>461</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetFixedSize</enum>
-     </property>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Вас приветствует программа Amgine!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Подробнее о программе можно посмотреть в меню сверху.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="start_login_btn">
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>170</y>
+      <y>120</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -49,13 +27,26 @@
      <string>Начать!</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>459</width>
+      <height>109</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Вас приветствует программа Amgine!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Подробнее о программе можно посмотреть в меню сверху.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>453</width>
+     <width>481</width>
      <height>21</height>
     </rect>
    </property>
@@ -65,11 +56,10 @@
     </property>
     <addaction name="info"/>
     <addaction name="help"/>
-    <addaction name="action_3"/>
+    <addaction name="history"/>
    </widget>
    <addaction name="menu"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="info">
    <property name="text">
     <string>Инфо</string>
@@ -80,9 +70,9 @@
     <string>Помощь</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="history">
    <property name="text">
-    <string>История поиска</string>
+    <string>История</string>
    </property>
   </action>
  </widget>

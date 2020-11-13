@@ -36,6 +36,19 @@ class VigenereMainWindow(QMainWindow):
         self.btn_save_settings.setEnabled(False)
         self.btn_load_settings.clicked.connect(self.load_settings)
 
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
+
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -116,6 +129,19 @@ class MorseMainWindow(QMainWindow):
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
 
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
+
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -129,7 +155,7 @@ class MorseMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
             f = open(fname, 'w', encoding='utf8')
-            f.write(str(self.ciphertext))
+            f.write(self.ciphertext)
             f.close()
         except:
             pass
@@ -173,6 +199,19 @@ class CaesarMainWindow(QMainWindow):
         self.line_edit_key.setText('3')
         self.btn_save_settings.setEnabled(False)
 
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
+
     def code(self):
         try:
             if self.rb_lang_ru.isChecked():
@@ -203,7 +242,7 @@ class CaesarMainWindow(QMainWindow):
         except ValueError:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
-                f' color:#ff1500;">Ключ должен быть целым числом</span></p></body></html>')
+                f' color:#ff1500;">Ключ должен быть целым числом!</span></p></body></html>')
 
     def save_text(self):
         try:
@@ -218,8 +257,7 @@ class CaesarMainWindow(QMainWindow):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
             f = open(fname, 'r', encoding='utf8')
-            self.text = f.read()
-            self.textBrowser_input.setText(self.text)
+            self.textBrowser_input.setText(f.read())
             f.close()
         except:
             pass
@@ -262,6 +300,18 @@ class StartWindow(QMainWindow):
         uic.loadUi('start_window.ui', self)
         # self.setupUi(self)
         self.start_login_btn.clicked.connect(self.start)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
 
     def start(self):
         self.log.show()
@@ -291,6 +341,18 @@ class ChoiceWindow(QMainWindow):
         uic.loadUi('choice_window.ui', self)
         # self.setupUi(self)
         self.start_button.clicked.connect(self.start)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
 
     def start(self):
         global CIPHER
@@ -347,6 +409,18 @@ class MonoAlphaUseDict(QMainWindow):
         self.success_load_dict.close()
         self.btn_code.setEnabled(False)
         self.btn_check.setEnabled(False)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
 
     def check(self):
         out = []
@@ -420,6 +494,18 @@ class MonoAlphaAddDict(QMainWindow):
         self.btn_save_dict.clicked.connect(self.save)
         self.dict = create_dict()
         self.btn_save_dict.setEnabled(False)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
 
     def add(self):
         try:
@@ -476,6 +562,18 @@ class NumberSystemsMain(QMainWindow):
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
         self.rb_encode.setChecked(True)
+        self.info.triggered.connect(self.show_info)
+        self.help.triggered.connect(self.show_help)
+        self.history.triggered.connect(self.show_history)
+
+    def show_info(self):
+        pass
+
+    def show_help(self):
+        pass
+
+    def show_history(self):
+        pass
 
     def save_text(self):
         try:
@@ -510,7 +608,11 @@ class NumberSystemsMain(QMainWindow):
         except:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
-                f' color:#ff1500;">Неверный формат текста</span></p></body></html>')
+                f' color:#ff1500;">Неверный формат текста!</span></p></body></html>')
+
+
+class InfoWindow(QMainWindow):
+    pass
 
 
 if __name__ == '__main__':

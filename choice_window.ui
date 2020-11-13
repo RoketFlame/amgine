@@ -139,7 +139,7 @@
   </action>
   <action name="history">
    <property name="text">
-    <string>История поиска</string>
+    <string>История</string>
    </property>
   </action>
  </widget>
