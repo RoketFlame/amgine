@@ -154,8 +154,9 @@ def vigenere_encode(key, text, lang='RU'):
         raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
     if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
-        if not all([True if x in main_list else False for x in key]):
-            raise WrongChar('В тексте или в ключе есть символ другого языка!')
+        raise WrongChar('В тексте или в ключе есть символ другого языка!')
+    if not all([True if x in main_list else False for x in key]):
+        raise WrongChar('В тексте или в ключе есть символ другого языка!')
 
     for index, char in enumerate(text):
         if char.isalpha():  # обработка толкько словарных символов
@@ -186,8 +187,9 @@ def vigenere_decode(key, text, lang='RU'):
         raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
     if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
-        if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in key]):
-            raise WrongChar('В тексте или в ключе есть символ другого языка!')
+        raise WrongChar('В тексте или в ключе есть символ другого языка!')
+    if not all([True if x in main_list else False for x in key]):
+        raise WrongChar('В тексте или в ключе есть символ другого языка!')
 
     for index, char in enumerate(text):  # используем enumerate, чтобы сохранить индексы букв
         if char.isalpha():  # обработка толкько словарных символов

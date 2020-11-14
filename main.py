@@ -818,6 +818,7 @@ class HistoryWindow(QMainWindow):
 
         self.con = sqlite3.connect("record.db")
         self.btn_refresh.clicked.connect(self.show_db)
+        self.btn_delete.clicked.connect(self.delete)
         self.show_db()
 
     def show_db(self):
@@ -835,6 +836,12 @@ class HistoryWindow(QMainWindow):
     def closeEvent(self, event):
         # При закрытии формы закроем и наше соединение с базой данных
         self.con.close()
+
+    def delete(self):
+        self.con.cursor().execute('DELETE from record_table')
+        self.con.commit()
+
+
 
 
 if __name__ == '__main__':
