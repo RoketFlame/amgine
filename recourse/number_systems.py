@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTa
 from all_crypto_functions import encode_in_number_systems, decode_in_number_systems
 from designs.number_systems_main import Ui_Number_Systems_Main
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
+import recourse.just_login
+
 
 class NumberSystemsMain(QMainWindow, Ui_Number_Systems_Main):
     # class NumberSystemsMain(QMainWindow):
@@ -61,8 +63,7 @@ class NumberSystemsMain(QMainWindow, Ui_Number_Systems_Main):
             pass
 
     def add_to_record_db(self, is_d):
-        global LOGIN
-        db_login = LOGIN
+        db_login = recourse.just_login.LOGIN
         db_is_dec = is_d
         db_nameciph = self.code_type
         ins_value = (db_login, db_is_dec, db_nameciph)

@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTa
 
 from designs.login_dialog import Ui_Dialog
 from recourse.choice import ChoiceWindow
+import recourse.just_login
 
 
 class LoginDialog(QDialog, Ui_Dialog):
@@ -14,8 +15,10 @@ class LoginDialog(QDialog, Ui_Dialog):
         self.buttonBox.clicked.connect(self.run_login)
 
     def run_login(self):
-        global LOGIN
         # получение логина для базы данных
-        LOGIN = self.lineEdit.text()
+        if self.lineEdit.text():
+            recourse.just_login.LOGIN = self.lineEdit.text()
+        else:
+            LOGIN = 'USER'
         self.main = ChoiceWindow()
         self.main.show()

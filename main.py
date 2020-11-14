@@ -1,7 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from recourse.start import StartWindow
-LOGIN = 'USER'
 
 
 def except_hook(cls, exception, traceback):

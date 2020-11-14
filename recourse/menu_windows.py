@@ -52,4 +52,3 @@ class HistoryWindow(QMainWindow, Ui_History_Window):
     def delete(self):
         self.con.cursor().execute('DELETE from record_table')
         self.con.commit()
-

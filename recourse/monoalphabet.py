@@ -7,6 +7,7 @@ from designs.mono_add_dict import Ui_Mono_Alpha_Add_Dict
 from designs.mono_main import Ui_Mono_Alpha_Main
 from designs.mono_use_dict import Ui_Mono_Alpha_Use_Dict
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
+import recourse.just_login
 
 
 class MonoAlphaMain(QMainWindow, Ui_Mono_Alpha_Main):
@@ -66,8 +67,7 @@ class MonoAlphaUseDict(QMainWindow, Ui_Mono_Alpha_Use_Dict):
         self.history_window.show()
 
     def add_to_record_db(self, is_d):
-        global LOGIN
-        db_login = LOGIN
+        db_login = recourse.just_login.LOGIN
         db_is_dec = is_d
         db_nameciph = self.code_type
         ins_value = (db_login, db_is_dec, db_nameciph)

@@ -141,7 +141,7 @@ def morse_decode(text, lang='RU'):
 def vigenere_encode(key, text, lang='RU'):
     # избавление текста и ключа от "лишних" знаков
     key = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x in [' ', '\n'] else '', text))
+    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x in [' ', '\n', '\r'] else '', text))
 
     out = []  # список, который будет возвращаться
     no_alpha_chars = 0  # счетчик не алфавитных символов, чтобы индексы ключа правильно считались
@@ -153,7 +153,8 @@ def vigenere_encode(key, text, lang='RU'):
     else:
         raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
-    if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
+    if not all([True if x in main_list or x.isdigit() or x in [' ', '\n', '\r'] else False for x in
+                text]):
         raise WrongChar('В тексте или в ключе есть символ другого языка!')
     if not all([True if x in main_list else False for x in key]):
         raise WrongChar('В тексте или в ключе есть символ другого языка!')
@@ -174,7 +175,7 @@ def vigenere_encode(key, text, lang='RU'):
 def vigenere_decode(key, text, lang='RU'):
     # избавление текста и ключа от "лишних" знаков
     key = ''.join(map(lambda x: x.lower() if x.isalnum() or x == ' ' else '', key))
-    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x in [' ', '\n'] else '', text))
+    text = ''.join(map(lambda x: x.lower() if x.isalnum() or x in [' ', '\n', '\r'] else '', text))
 
     out = []  # список, который будет возвращаться
     no_alpha_chars = 0  # счетчик не алфавитных символов, чтобы индексы ключа правильно считались
@@ -186,7 +187,8 @@ def vigenere_decode(key, text, lang='RU'):
     else:
         raise WrongLanguage('Введён неверный язык!')  # исключение, если нет такого языка
     # проверка на наличие всех символов в списке
-    if not all([True if x in main_list or x.isdigit() or x == ' ' else False for x in text]):
+    if not all([True if x in main_list or x.isdigit() or x in [' ', '\n', '\r'] else False for x in
+                text]):
         raise WrongChar('В тексте или в ключе есть символ другого языка!')
     if not all([True if x in main_list else False for x in key]):
         raise WrongChar('В тексте или в ключе есть символ другого языка!')

@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTa
 from all_crypto_functions import vigenere_encode, vigenere_decode, SomethingWrong
 from designs.vigenere_main import Ui_Vigenere_Main_Window
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
+import recourse.just_login
+
 
 
 
@@ -49,13 +51,10 @@ class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
 
     # загрузка текста
     def load_text(self):
-        try:
-            fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
-            f = open(fname, 'r', encoding='utf8')
-            self.textBrowser_input.setText(f.read())
-            f.close()
-        except:
-            pass
+        fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
+        f = open(fname, 'r', encoding='utf8')
+        self.textBrowser_input.setText(f.read())
+        f.close()
 
     # сохранение текста
     def save_text(self):
@@ -68,8 +67,7 @@ class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
             pass
 
     def add_to_record_db(self, is_d):
-        global LOGIN
-        db_login = LOGIN
+        db_login = recourse.just_login.LOGIN
         db_is_dec = is_d
         db_nameciph = self.code_type
         ins_value = (db_login, db_is_dec, db_nameciph)

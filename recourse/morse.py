@@ -1,10 +1,10 @@
 import sqlite3
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
 
-from all_crypto_functions import morse_encode, morse_decode
+from all_crypto_functions import morse_encode, morse_decode, SomethingWrong
 from designs.morse_main import Ui_Morse_Main_Window
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
-
+import recourse.just_login
 
 
 class MorseMainWindow(QMainWindow, Ui_Morse_Main_Window):
@@ -62,8 +62,7 @@ class MorseMainWindow(QMainWindow, Ui_Morse_Main_Window):
             pass
 
     def add_to_record_db(self, is_d):
-        global LOGIN
-        db_login = LOGIN
+        db_login = recourse.just_login.LOGIN
         db_is_dec = is_d
         db_nameciph = self.code_type
         ins_value = (db_login, db_is_dec, db_nameciph)
@@ -87,7 +86,6 @@ class MorseMainWindow(QMainWindow, Ui_Morse_Main_Window):
                 self.ciphertext = morse_decode(text, self.lang)
                 type_c = 'decode'
             self.textBrowser_output.setText(self.ciphertext)
-            self.label_error.setText('')
             if self.ciphertext and text:
                 self.add_to_record_db(type_c)
         except SomethingWrong as s:
