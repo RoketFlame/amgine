@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Caesar_Main_Window(object):
+class Ui_Vigenere_Main_Window(object):
     def setupUi(self, Caesar_Main_Window):
         Caesar_Main_Window.setObjectName("Caesar_Main_Window")
         Caesar_Main_Window.resize(650, 600)
@@ -41,6 +41,9 @@ class Ui_Caesar_Main_Window(object):
         self.rb_crypt_decode.setGeometry(QtCore.QRect(410, 376, 20, 51))
         self.rb_crypt_decode.setText("")
         self.rb_crypt_decode.setObjectName("rb_crypt_decode")
+        self.buttonGroup_2 = QtWidgets.QButtonGroup(Caesar_Main_Window)
+        self.buttonGroup_2.setObjectName("buttonGroup_2")
+        self.buttonGroup_2.addButton(self.rb_crypt_decode)
         self.textBrowser_output = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_output.setGeometry(QtCore.QRect(390, 30, 251, 211))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
@@ -53,6 +56,9 @@ class Ui_Caesar_Main_Window(object):
         self.rb_lang_eng.setGeometry(QtCore.QRect(410, 326, 16, 31))
         self.rb_lang_eng.setText("")
         self.rb_lang_eng.setObjectName("rb_lang_eng")
+        self.buttonGroup = QtWidgets.QButtonGroup(Caesar_Main_Window)
+        self.buttonGroup.setObjectName("buttonGroup")
+        self.buttonGroup.addButton(self.rb_lang_eng)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(390, 250, 161, 31))
         self.label_4.setObjectName("label_4")
@@ -66,6 +72,7 @@ class Ui_Caesar_Main_Window(object):
         self.rb_crypt_code.setGeometry(QtCore.QRect(230, 380, 20, 41))
         self.rb_crypt_code.setText("")
         self.rb_crypt_code.setObjectName("rb_crypt_code")
+        self.buttonGroup_2.addButton(self.rb_crypt_code)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(390, 0, 241, 31))
         self.label_2.setObjectName("label_2")
@@ -91,6 +98,7 @@ class Ui_Caesar_Main_Window(object):
         self.rb_lang_ru.setGeometry(QtCore.QRect(230, 326, 21, 41))
         self.rb_lang_ru.setText("")
         self.rb_lang_ru.setObjectName("rb_lang_ru")
+        self.buttonGroup.addButton(self.rb_lang_ru)
         self.btn_load_text = QtWidgets.QPushButton(self.centralwidget)
         self.btn_load_text.setGeometry(QtCore.QRect(120, 250, 91, 31))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)

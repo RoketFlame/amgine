@@ -21,30 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="76a239d5-a5ab-46d5-bd61-f09f5ed6c74e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all_crypto_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_crypto_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caesar_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/caesar_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caesar_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/caesar_main.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/choice_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/choice_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/choice_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/choice_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/history_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/history_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/login_dialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login_dialog.ui" beforeDir="false" afterPath="$PROJECT_DIR$/login_dialog.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_add_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_add_dict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_add_dict.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mono_add_dict.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mono_main.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_use_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_use_dict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_use_dict.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mono_use_dict.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morse_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/morse_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morse_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/morse_main.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/number_systems_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/number_systems_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/number_systems_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/number_systems_main.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record.db" beforeDir="false" afterPath="$PROJECT_DIR$/record.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/start_window.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vigenere_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vigenere_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vigenere_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/vigenere_main.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,26 +144,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604954250193" />
-    <state width="1670" height="233" key="GridCell.Tab.0.bottom" timestamp="1605359439316">
+    <state width="1670" height="233" key="GridCell.Tab.0.bottom" timestamp="1605360109184">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
     <state width="1579" height="108" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605342132112" />
-    <state width="1670" height="233" key="GridCell.Tab.0.bottom/0.46.1920.1034@0.46.1920.1034" timestamp="1605359439316" />
-    <state width="1670" height="233" key="GridCell.Tab.0.center" timestamp="1605359439316">
+    <state width="1670" height="233" key="GridCell.Tab.0.bottom/0.46.1920.1034@0.46.1920.1034" timestamp="1605360109184" />
+    <state width="1670" height="233" key="GridCell.Tab.0.center" timestamp="1605360109184">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
     <state width="1579" height="108" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1605342132112" />
-    <state width="1670" height="233" key="GridCell.Tab.0.center/0.46.1920.1034@0.46.1920.1034" timestamp="1605359439316" />
-    <state width="1670" height="233" key="GridCell.Tab.0.left" timestamp="1605359439316">
+    <state width="1670" height="233" key="GridCell.Tab.0.center/0.46.1920.1034@0.46.1920.1034" timestamp="1605360109184" />
+    <state width="1670" height="233" key="GridCell.Tab.0.left" timestamp="1605360109184">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
     <state width="1579" height="108" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1605342132111" />
-    <state width="1670" height="233" key="GridCell.Tab.0.left/0.46.1920.1034@0.46.1920.1034" timestamp="1605359439316" />
-    <state width="1670" height="233" key="GridCell.Tab.0.right" timestamp="1605359439316">
+    <state width="1670" height="233" key="GridCell.Tab.0.left/0.46.1920.1034@0.46.1920.1034" timestamp="1605360109184" />
+    <state width="1670" height="233" key="GridCell.Tab.0.right" timestamp="1605360109184">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
     <state width="1579" height="108" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1605342132112" />
-    <state width="1670" height="233" key="GridCell.Tab.0.right/0.46.1920.1034@0.46.1920.1034" timestamp="1605359439316" />
+    <state width="1670" height="233" key="GridCell.Tab.0.right/0.46.1920.1034@0.46.1920.1034" timestamp="1605360109184" />
     <state width="1579" height="70" key="GridCell.Tab.1.bottom" timestamp="1605251678766">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

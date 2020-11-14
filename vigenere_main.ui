@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Caesar_Main_Window</class>
- <widget class="QMainWindow" name="Caesar_Main_Window">
+ <class>Vigenere_Main_Window</class>
+ <widget class="QMainWindow" name="Vigenere_Main_Window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -107,6 +107,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_2</string>
+    </attribute>
    </widget>
    <widget class="QTextBrowser" name="textBrowser_output">
     <property name="geometry">
@@ -136,6 +139,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
@@ -188,6 +194,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_2</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
@@ -269,6 +278,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="btn_load_text">
     <property name="geometry">
@@ -460,4 +472,8 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>

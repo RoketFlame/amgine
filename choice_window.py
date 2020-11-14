@@ -21,7 +21,7 @@ class Ui_Central_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.type_crypt = QtWidgets.QComboBox(self.centralwidget)
         self.type_crypt.setGeometry(QtCore.QRect(50, 210, 161, 31))
-        self.type_crypt.setStyleSheet("background-color: rgb(168, 168, 168);")
+        self.type_crypt.setStyleSheet("")
         self.type_crypt.setObjectName("type_crypt")
         self.type_crypt.addItem("")
         self.type_crypt.addItem("")
@@ -81,4 +81,4 @@ class Ui_Central_MainWindow(object):
         self.info.setText(_translate("Central_MainWindow", "Инфо"))
         self.help.setText(_translate("Central_MainWindow", "Помощь"))
         self.history.setText(_translate("Central_MainWindow", "История"))
-import phonk_fone_test_rc
+

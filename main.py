@@ -2,14 +2,20 @@ import sys
 import sqlite3
 from numpy import transpose
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
-# from start_window import Ui_Start_Window
-# from login_dialog import Ui_Dialog
-# from choice_window import Ui_Central_MainWindow
-# from morse_main import Ui_Morse_Main_Window
-# from caesar_main import Ui_Caesar_Main_Window
-# from number_systems_main import Ui_Number_Systems_Main
-# from help_window import Ui_Help_Window
-# from info_window import Ui_Info_Window
+
+from mono_add_dict import Ui_Mono_Alpha_Add_Dict
+from mono_main import Ui_Mono_Alpha_Main
+from mono_use_dict import Ui_Mono_Alpha_Use_Dict
+from start_window import Ui_Start_Window
+from login_dialog import Ui_Dialog
+from choice_window import Ui_Central_MainWindow
+from vigenere_main import Ui_Vigenere_Main_Window
+from morse_main import Ui_Morse_Main_Window
+from caesar_main import Ui_Caesar_Main_Window
+from number_systems_main import Ui_Number_Systems_Main
+from help_window import Ui_Help_Window
+from info_window import Ui_Info_Window
+from history_window import Ui_History_Window
 from all_crypto_functions import *
 from PyQt5 import uic
 
@@ -20,13 +26,13 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
-# class StartWindow(QMainWindow, Ui_MainWindow):
-class StartWindow(QMainWindow):
+class StartWindow(QMainWindow, Ui_Start_Window):
+    # class StartWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.log = LoginDialog()
-        uic.loadUi('start_window.ui', self)  # Подгузка ui файла
-        # self.setupUi(self)
+        # uic.loadUi('start_window.ui', self)  # Подгузка ui файла
+        self.setupUi(self)
         # Подключения всех кнопок к событиям
         self.start_login_btn.clicked.connect(self.start)
         self.info.triggered.connect(self.show_info)
@@ -52,12 +58,12 @@ class StartWindow(QMainWindow):
         self.close()
 
 
-# class LoginDialog(QDialog, Ui_Dialog):
-class LoginDialog(QDialog):
+class LoginDialog(QDialog, Ui_Dialog):
+    # class LoginDialog(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi('login_dialog.ui', self)  # Подгузка ui файла
-        # self.setupUi(self)
+        # uic.loadUi('login_dialog.ui', self)  # Подгузка ui файла
+        self.setupUi(self)
         # Подключения всех кнопок к событиям
         self.buttonBox.clicked.connect(self.run_login)
 
@@ -69,13 +75,13 @@ class LoginDialog(QDialog):
         self.main.show()
 
 
-# class ChoiceWindow(QMainWindow, Ui_Central_MainWindow):
-class ChoiceWindow(QMainWindow):
+class ChoiceWindow(QMainWindow, Ui_Central_MainWindow):
+    # class ChoiceWindow(QMainWindow):
     def __init__(self):
         global LOGIN
         super().__init__()
-        uic.loadUi('choice_window.ui', self)  # Подгузка ui файла
-        # self.setupUi(self)
+        # uic.loadUi('choice_window.ui', self)  # Подгузка ui файла
+        self.setupUi(self)
         # Подключения всех кнопок к событиям
         self.start_button.clicked.connect(self.start)
         self.info.triggered.connect(self.show_info)
@@ -117,16 +123,16 @@ class ChoiceWindow(QMainWindow):
             self.number_systems.show()
 
 
-# class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
-class VigenereMainWindow(QMainWindow):
+class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
+    # class VigenereMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('vigenere_main.ui', self)  # Подгузка ui файла
+        # uic.loadUi('vigenere_main.ui', self)  # Подгузка ui файла
 
         self.con = sqlite3.connect("record.db")
         self.cur = self.con.cursor()
         self.code_type = 'VIGENERE'
-        # self.setupUi(self)
+        self.setupUi(self)
         # выставление значений по умолчанию
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
@@ -247,12 +253,12 @@ class VigenereMainWindow(QMainWindow):
         self.con.close()
 
 
-# class MorseMainWindow(QMainWindow, Ui_Morse_MainWindow):
-class MorseMainWindow(QMainWindow):
+class MorseMainWindow(QMainWindow, Ui_Morse_Main_Window):
+    # class MorseMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        # self.setupUi(self)
-        uic.loadUi('morse_main.ui', self)  # подгрузка ui файла
+        self.setupUi(self)
+        # uic.loadUi('morse_main.ui', self)  # подгрузка ui файла
 
         self.con = sqlite3.connect("record.db")
         self.cur = self.con.cursor()
@@ -339,16 +345,16 @@ class MorseMainWindow(QMainWindow):
         self.con.close()
 
 
-# class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):
-class CaesarMainWindow(QMainWindow):
+class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):
+    # class CaesarMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('caesar_main.ui', self)  # подгрузка ui файла
+        # uic.loadUi('caesar_main.ui', self)  # подгрузка ui файла
 
         self.con = sqlite3.connect("record.db")
         self.cur = self.con.cursor()
         self.code_type = 'CAESAR'
-        # self.setupUi(self)
+        self.setupUi(self)
         # пдключение кнопок к событиям
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
@@ -484,12 +490,13 @@ class CaesarMainWindow(QMainWindow):
     def closeEvent(self, event):
         self.con.close()
 
-# class MonoAlphaMain(QMainWindow, Ui_Mono_Alpha_Main):
-class MonoAlphaMain(QMainWindow):
+
+class MonoAlphaMain(QMainWindow, Ui_Mono_Alpha_Main):
+    # class MonoAlphaMain(QMainWindow):
     def __init__(self):
         super().__init__()
-        # self.setupUi(self)
-        uic.loadUi('mono_main.ui', self)  # подгрузка ui файла
+        self.setupUi(self)
+        # uic.loadUi('mono_main.ui', self)  # подгрузка ui файла
         # подключение кнопок к событиям
         self.btn_add_dict.clicked.connect(self.add)
         self.btn_use_dict.clicked.connect(self.use)
@@ -503,12 +510,12 @@ class MonoAlphaMain(QMainWindow):
         self.use_dict.show()
 
 
-# class MonoAlphaUseDict(QMainWindow, Ui_Mono_Alpha_Use_Dict):
-class MonoAlphaUseDict(QMainWindow):
+class MonoAlphaUseDict(QMainWindow, Ui_Mono_Alpha_Use_Dict):
+    # class MonoAlphaUseDict(QMainWindow):
     def __init__(self):
         super().__init__()
-        # self.setupUi(self)
-        uic.loadUi('mono_use_dict.ui', self)  # подгрузка ui файла
+        self.setupUi(self)
+        # uic.loadUi('mono_use_dict.ui', self)  # подгрузка ui файла
         self.con = sqlite3.connect("record.db")
         self.cur = self.con.cursor()
         self.code_type = 'MONO_ALPH'
@@ -625,12 +632,12 @@ class MonoAlphaUseDict(QMainWindow):
         self.con.close()
 
 
-# class MonoAlphaAddDict(QMainWindow, Ui_Mono_Alpha_Add_Dict):
-class MonoAlphaAddDict(QMainWindow):
+class MonoAlphaAddDict(QMainWindow, Ui_Mono_Alpha_Add_Dict):
+    # class MonoAlphaAddDict(QMainWindow):
     def __init__(self):
         super().__init__()
-        # self.setupUi(self)
-        uic.loadUi('mono_add_dict.ui', self)  # подгрузка ui файла
+        self.setupUi(self)
+        # uic.loadUi('mono_add_dict.ui', self)  # подгрузка ui файла
         # подключение всех кнопок к событиям
         self.btn_add.clicked.connect(self.add)
         self.btn_check.clicked.connect(self.check)
@@ -705,16 +712,16 @@ class MonoAlphaAddDict(QMainWindow):
             pass
 
 
-# class NumberSystemsMain(QMainWindow, Ui_Number_Systems_Main)
-class NumberSystemsMain(QMainWindow):
+class NumberSystemsMain(QMainWindow, Ui_Number_Systems_Main):
+    # class NumberSystemsMain(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('number_systems_main.ui', self)  # подгрузка ui файла
+        # uic.loadUi('number_systems_main.ui', self)  # подгрузка ui файла
 
         self.con = sqlite3.connect("record.db")
         self.cur = self.con.cursor()
         self.code_type = 'CALC_NUM'
-        # self.setupUi(self)
+        self.setupUi(self)
         # подключение всех кнопок
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
@@ -795,26 +802,28 @@ class NumberSystemsMain(QMainWindow):
         self.con.close()
 
 
-# class InfoWindow(QMainWindow, Ui_Info_Window):
-class InfoWindow(QMainWindow):
+class InfoWindow(QMainWindow, Ui_Info_Window):
+    # class InfoWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('info_window.ui', self)  # подгрузка ui файла
-        # self.setupUi(self)
+        # uic.loadUi('info_window.ui', self)  # подгрузка ui файла
+        self.setupUi(self)
 
 
-# class HelpWindow(QMainWindow, Ui_Help_Window):
-class HelpWindow(QMainWindow):
+class HelpWindow(QMainWindow, Ui_Help_Window):
+    # class HelpWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('help_window.ui', self)  # подгрузка ui файла
-        # self.setupUi(self)
+        # uic.loadUi('help_window.ui', self)  # подгрузка ui файла
+        self.setupUi(self)
 
 
-class HistoryWindow(QMainWindow):
+class HistoryWindow(QMainWindow, Ui_History_Window):
+    # class HistoryWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('history_window.ui', self)
+        # uic.loadUi('history_window.ui', self)
+        self.setupUi(self)
 
         self.con = sqlite3.connect("record.db")
         self.btn_refresh.clicked.connect(self.show_db)
@@ -840,8 +849,6 @@ class HistoryWindow(QMainWindow):
     def delete(self):
         self.con.cursor().execute('DELETE from record_table')
         self.con.commit()
-
-
 
 
 if __name__ == '__main__':

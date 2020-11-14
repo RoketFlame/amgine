@@ -343,7 +343,7 @@
      <string/>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">btn_group_lang</string>
+     <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
    <widget class="QRadioButton" name="rb_cap_yes">
@@ -359,7 +359,7 @@
      <string/>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">btn_group_cap</string>
+     <string notr="true">buttonGroup_2</string>
     </attribute>
    </widget>
    <widget class="QRadioButton" name="rb_crypt_code">
@@ -375,7 +375,7 @@
      <string/>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">btn_group_crypt</string>
+     <string notr="true">buttonGroup_3</string>
     </attribute>
    </widget>
    <widget class="QRadioButton" name="rb_lang_eng">
@@ -391,7 +391,7 @@
      <string/>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">btn_group_lang</string>
+     <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
    <widget class="QRadioButton" name="rb_cap_no">
@@ -407,7 +407,7 @@
      <string/>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">btn_group_cap</string>
+     <string notr="true">buttonGroup_2</string>
     </attribute>
    </widget>
    <widget class="QRadioButton" name="rb_crypt_decode">
@@ -423,7 +423,7 @@
      <string/>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">btn_group_crypt</string>
+     <string notr="true">buttonGroup_3</string>
     </attribute>
    </widget>
    <widget class="QLabel" name="label_12">
@@ -549,8 +549,8 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="btn_group_lang"/>
-  <buttongroup name="btn_group_cap"/>
-  <buttongroup name="btn_group_crypt"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

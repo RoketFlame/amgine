@@ -39,6 +39,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
@@ -110,6 +113,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_2</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
@@ -136,6 +142,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
@@ -220,6 +229,9 @@
     <property name="text">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_2</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="btn_code">
     <property name="geometry">
@@ -390,4 +402,8 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
+ </buttongroups>
 </ui>
