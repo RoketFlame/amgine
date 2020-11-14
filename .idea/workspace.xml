@@ -20,27 +20,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76a239d5-a5ab-46d5-bd61-f09f5ed6c74e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/recourse/caesar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/choice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/menu_windows.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/monoalphabet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/morse.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/number_systems.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/start.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recourse/vigenere.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Amgine_project.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Poyasnitelnaya_zapiska-Amgine.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/all_crypto_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/all_crypto_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/main.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caesar_main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/caesar_main.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/choice_window.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/choice_window.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/help_window.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/help_window.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history_window.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/history_window.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/info_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/info_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info_window.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/info_window.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_dialog.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/login_dialog.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mono_add_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/mono_add_dict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mono_add_dict.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mono_add_dict.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mono_main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mono_main.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mono_use_dict.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mono_use_dict.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/morse_main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/morse_main.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/number_systems_main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/number_systems_main.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start_window.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/start_window.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_project.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vigenere_main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vigenere_main.ui" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,25 +200,25 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604954250193" />
     <state x="740" y="319" key="FileChooserDialogImpl/0.46.1920.1034@0.46.1920.1034" timestamp="1605360522990" />
-    <state width="1670" height="233" key="GridCell.Tab.0.bottom" timestamp="1605362523910">
-      <screen x="0" y="46" width="1920" height="1034" />
+    <state width="1579" height="108" key="GridCell.Tab.0.bottom" timestamp="1605380010070">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="108" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605342132112" />
+    <state width="1579" height="108" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1605380010070" />
     <state width="1670" height="233" key="GridCell.Tab.0.bottom/0.46.1920.1034@0.46.1920.1034" timestamp="1605362523910" />
-    <state width="1670" height="233" key="GridCell.Tab.0.center" timestamp="1605362523910">
-      <screen x="0" y="46" width="1920" height="1034" />
+    <state width="1579" height="108" key="GridCell.Tab.0.center" timestamp="1605380010069">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="108" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1605342132112" />
+    <state width="1579" height="108" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1605380010069" />
     <state width="1670" height="233" key="GridCell.Tab.0.center/0.46.1920.1034@0.46.1920.1034" timestamp="1605362523910" />
-    <state width="1670" height="233" key="GridCell.Tab.0.left" timestamp="1605362523910">
-      <screen x="0" y="46" width="1920" height="1034" />
+    <state width="1579" height="108" key="GridCell.Tab.0.left" timestamp="1605380010069">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="108" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1605342132111" />
+    <state width="1579" height="108" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1605380010069" />
     <state width="1670" height="233" key="GridCell.Tab.0.left/0.46.1920.1034@0.46.1920.1034" timestamp="1605362523910" />
-    <state width="1670" height="233" key="GridCell.Tab.0.right" timestamp="1605362523910">
-      <screen x="0" y="46" width="1920" height="1034" />
+    <state width="1579" height="108" key="GridCell.Tab.0.right" timestamp="1605380010070">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="108" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1605342132112" />
+    <state width="1579" height="108" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1605380010070" />
     <state width="1670" height="233" key="GridCell.Tab.0.right/0.46.1920.1034@0.46.1920.1034" timestamp="1605362523910" />
     <state width="1579" height="70" key="GridCell.Tab.1.bottom" timestamp="1605251678766">
       <screen x="0" y="0" width="1600" height="860" />
