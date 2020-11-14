@@ -244,10 +244,12 @@ class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
                 self.rb_lang_ru.setChecked(True)
             f.close()
             self.label_error.setText('')
-        except:
+        except ValueError:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">Неверный формат настроек!</span></p></body></html>')
+        except FileNotFoundError:
+            pass
 
     def closeEvent(self, event):
         self.con.close()
@@ -482,10 +484,12 @@ class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):
                 self.rb_lang_ru.setChecked(True)
             self.label_error.setText('')
             f.close()
-        except:
+        except ValueError:
             self.label_error.setText(
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">Неверный формат настроек!</span></p></body></html>')
+        except FileNotFoundError:
+            pass
 
     def closeEvent(self, event):
         self.con.close()

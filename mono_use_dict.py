@@ -41,7 +41,7 @@ class Ui_Mono_Alpha_Use_Dict(object):
         self.btn_load_dict.setObjectName("btn_load_dict")
         self.success_load_dict = QtWidgets.QLabel(self.centralwidget)
         self.success_load_dict.setEnabled(True)
-        self.success_load_dict.setGeometry(QtCore.QRect(270, 320, 221, 31))
+        self.success_load_dict.setGeometry(QtCore.QRect(270, 320, 171, 31))
         self.success_load_dict.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.success_load_dict.setObjectName("success_load_dict")
         self.textBrowser_input = QtWidgets.QTextBrowser(self.centralwidget)
