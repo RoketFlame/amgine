@@ -25,8 +25,9 @@ class StartWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.log = LoginDialog()
-        uic.loadUi('start_window.ui', self)
+        uic.loadUi('start_window.ui', self)  # Подгузка ui файла
         # self.setupUi(self)
+        # Подключения всех кнопок к событиям
         self.start_login_btn.clicked.connect(self.start)
         self.info.triggered.connect(self.show_info)
         self.help.triggered.connect(self.show_help)
@@ -54,12 +55,14 @@ class StartWindow(QMainWindow):
 class LoginDialog(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi('login_dialog.ui', self)
+        uic.loadUi('login_dialog.ui', self)  # Подгузка ui файла
         # self.setupUi(self)
+        # Подключения всех кнопок к событиям
         self.buttonBox.clicked.connect(self.run_login)
 
     def run_login(self):
         global LOGIN
+        # получение логина для базы данных
         LOGIN = self.lineEdit.text()
         self.main = ChoiceWindow()
         self.main.show()
@@ -70,8 +73,9 @@ class ChoiceWindow(QMainWindow):
     def __init__(self):
         global LOGIN
         super().__init__()
-        uic.loadUi('choice_window.ui', self)
+        uic.loadUi('choice_window.ui', self)  # Подгузка ui файла
         # self.setupUi(self)
+        # Подключения всех кнопок к событиям
         self.start_button.clicked.connect(self.start)
         self.info.triggered.connect(self.show_info)
         self.help.triggered.connect(self.show_help)
@@ -92,6 +96,7 @@ class ChoiceWindow(QMainWindow):
 
     def start(self):
         global CIPHER
+        # выбор способа шифрования
         self.crypt_t = self.type_crypt.currentText()
         if self.crypt_t == 'Шифр Цезаря':
             CIPHER = 'CAESAR'
@@ -117,14 +122,14 @@ class ChoiceWindow(QMainWindow):
 class VigenereMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        uic.loadUi('vigenere_main.ui', self)  # Подгузка ui файла
         # self.setupUi(self)
-        uic.loadUi('vigenere_main.ui', self)
-
+        # выставление значений по умолчанию
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
         self.btn_save_settings.setEnabled(False)
         self.line_edit_key.setText('key')
-
+        # Подключения всех кнопок к событиям
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
@@ -148,6 +153,7 @@ class VigenereMainWindow(QMainWindow):
     def show_history(self):
         pass
 
+    # загрузка текста
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -157,6 +163,7 @@ class VigenereMainWindow(QMainWindow):
         except:
             pass
 
+    # сохранение текста
     def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
@@ -166,6 +173,7 @@ class VigenereMainWindow(QMainWindow):
         except:
             pass
 
+    # функция кодирования
     def code(self):
         try:
             if self.rb_lang_ru.isChecked():
@@ -187,6 +195,7 @@ class VigenereMainWindow(QMainWindow):
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">{s}</span></p></body></html>')
 
+    # сохранение нстроек
     def save_settings(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.stg)')[0]
@@ -196,6 +205,7 @@ class VigenereMainWindow(QMainWindow):
         except:
             pass
 
+    # загрузка настроек
     def load_settings(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.stg)')[0]
@@ -220,11 +230,11 @@ class MorseMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('morse_main.ui', self)
-
+        uic.loadUi('morse_main.ui', self)  # подгрузка ui файла
+        # выставление значений по умолчанию
         self.rb_lang_ru.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
-
+        # Подключения всех кнопок к событиям
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
@@ -236,16 +246,15 @@ class MorseMainWindow(QMainWindow):
     def show_info(self):
         self.info_window = InfoWindow()
         self.info_window.show()
-        pass
 
     def show_help(self):
         self.help_window = HelpWindow()
         self.help_window.show()
-        pass
 
     def show_history(self):
         pass
 
+    # загрузка текста
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -255,6 +264,7 @@ class MorseMainWindow(QMainWindow):
         except:
             pass
 
+    # сохранение текста
     def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
@@ -264,6 +274,7 @@ class MorseMainWindow(QMainWindow):
         except:
             pass
 
+    # функция кодировния
     def code(self):
         try:
             if self.rb_lang_ru.isChecked():
@@ -287,15 +298,15 @@ class MorseMainWindow(QMainWindow):
 class CaesarMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('caesar_main.ui', self)
+        uic.loadUi('caesar_main.ui', self)  # подгрузка ui файла
         # self.setupUi(self)
-
+        # пдключение кнопок к событиям
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
         self.btn_save_settings.clicked.connect(self.save_settings)
         self.btn_load_settings.clicked.connect(self.load_settings)
-
+        # выставление значение по умолчанию
         self.rb_lang_ru.setChecked(True)
         self.rb_cap_yes.setChecked(True)
         self.rb_crypt_decode.setChecked(True)
@@ -319,6 +330,7 @@ class CaesarMainWindow(QMainWindow):
     def show_history(self):
         pass
 
+    # функция кодирования
     def code(self):
         try:
             if self.rb_lang_ru.isChecked():
@@ -351,6 +363,7 @@ class CaesarMainWindow(QMainWindow):
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">Ключ должен быть целым числом!</span></p></body></html>')
 
+    # сохранение текста
     def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -360,6 +373,7 @@ class CaesarMainWindow(QMainWindow):
         except:
             pass
 
+    # загрузка текста
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -369,6 +383,7 @@ class CaesarMainWindow(QMainWindow):
         except:
             pass
 
+    # сохранение настроек
     def save_settings(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.stg)')[0]
@@ -378,6 +393,7 @@ class CaesarMainWindow(QMainWindow):
         except:
             pass
 
+    # загрузка настроек
     def load_settings(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.stg)')[0]
@@ -406,7 +422,8 @@ class MonoAlphaMain(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('mono_main.ui', self)
+        uic.loadUi('mono_main.ui', self)  # подгрузка ui файла
+        # подключение кнопок к событиям
         self.btn_add_dict.clicked.connect(self.add)
         self.btn_use_dict.clicked.connect(self.use)
 
@@ -424,18 +441,20 @@ class MonoAlphaUseDict(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('mono_use_dict.ui', self)
+        uic.loadUi('mono_use_dict.ui', self)  # подгрузка ui файла
+        # подключение всез кнопок к событиям
         self.btn_code.clicked.connect(self.code)
         self.btn_save_text.clicked.connect(self.save_text)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_load_dict.clicked.connect(self.load_dict)
         self.btn_check.clicked.connect(self.check)
-        self.success_load_dict.close()
-        self.btn_code.setEnabled(False)
-        self.btn_check.setEnabled(False)
         self.info.triggered.connect(self.show_info)
         self.help.triggered.connect(self.show_help)
         self.history.triggered.connect(self.show_history)
+        # выставлнение значений по умолчанию
+        self.success_load_dict.close()
+        self.btn_code.setEnabled(False)
+        self.btn_check.setEnabled(False)
 
     def show_info(self):
         self.info_window = InfoWindow()
@@ -451,6 +470,7 @@ class MonoAlphaUseDict(QMainWindow):
         pass
 
     def check(self):
+        # красивый вывод словарая
         out = []
         res = []
         for i, key_val in enumerate(list(self.dict.items())[2:]):
@@ -468,6 +488,7 @@ class MonoAlphaUseDict(QMainWindow):
             ready_out += ' | '.join(line) + '\n'
         self.textBrowser_check.setText(ready_out)
 
+    # функция кодирования
     def code(self):
         try:
             self.ciphertext = monoalphabetic_code(self.textBrowser_input.toPlainText(), self.dict)
@@ -478,6 +499,7 @@ class MonoAlphaUseDict(QMainWindow):
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">{s}</span></p></body></html>')
 
+    # загрузка словаря
     def load_dict(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', 'Текст (*.dct)')[0]
@@ -495,6 +517,7 @@ class MonoAlphaUseDict(QMainWindow):
         except:
             pass
 
+    # сохранение текста
     def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
@@ -504,6 +527,7 @@ class MonoAlphaUseDict(QMainWindow):
         except:
             pass
 
+    # загрузка текста
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', 'Текст (*.txt)')[0]
@@ -519,10 +543,12 @@ class MonoAlphaAddDict(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.setupUi(self)
-        uic.loadUi('mono_add_dict.ui', self)
+        uic.loadUi('mono_add_dict.ui', self)  # подгрузка ui файла
+        # подключение всех кнопок к событиям
         self.btn_add.clicked.connect(self.add)
         self.btn_check.clicked.connect(self.check)
         self.btn_save_dict.clicked.connect(self.save)
+        # выставление значений по умолчанию
         self.dict = create_dict()
         self.btn_save_dict.setEnabled(False)
         self.info.triggered.connect(self.show_info)
@@ -542,6 +568,7 @@ class MonoAlphaAddDict(QMainWindow):
     def show_history(self):
         pass
 
+    # функчия добавления в словарь
     def add(self):
         try:
             self.key = self.le_key.text()
@@ -557,6 +584,7 @@ class MonoAlphaAddDict(QMainWindow):
                 f'<html><head/><body><p align="center"><span style=" font-size:12pt;'
                 f' color:#ff1500;">{s}</span></p></body></html>')
 
+    # функция красивого вывода словаря
     def check(self):
         out = []
         res = []
@@ -578,6 +606,7 @@ class MonoAlphaAddDict(QMainWindow):
         if len(self.dict) > 2:
             self.btn_save_dict.setEnabled(True)
 
+    # сохранение словаря
     def save(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать файл', '', 'Текст (*.dct)')[0]
@@ -592,11 +621,13 @@ class MonoAlphaAddDict(QMainWindow):
 class NumberSystemsMain(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('number_systems_main.ui', self)
+        uic.loadUi('number_systems_main.ui', self)  # подгрузка ui файла
         # self.setupUi(self)
+        # подключение всех кнопок
         self.btn_code.clicked.connect(self.code)
         self.btn_load_text.clicked.connect(self.load_text)
         self.btn_save_text.clicked.connect(self.save_text)
+        # выставление значений по умолчанию
         self.rb_encode.setChecked(True)
         self.info.triggered.connect(self.show_info)
         self.help.triggered.connect(self.show_help)
@@ -615,6 +646,7 @@ class NumberSystemsMain(QMainWindow):
     def show_history(self):
         pass
 
+    # сохранение текста
     def save_text(self):
         try:
             fname = QFileDialog.getSaveFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -624,6 +656,7 @@ class NumberSystemsMain(QMainWindow):
         except:
             pass
 
+    # загрузка текста
     def load_text(self):
         try:
             fname = QFileDialog.getOpenFileName(self, 'Выбрать текст', '', 'Текст (*.txt)')[0]
@@ -634,6 +667,7 @@ class NumberSystemsMain(QMainWindow):
         except:
             pass
 
+    # функция кодирования
     def code(self):
         try:
             radix = int(self.type_radix.currentText())
@@ -654,7 +688,7 @@ class NumberSystemsMain(QMainWindow):
 class InfoWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('info_window.ui', self)
+        uic.loadUi('info_window.ui', self)  # подгрузка ui файла
         # self.setupUi(self)
 
 
@@ -662,7 +696,7 @@ class InfoWindow(QMainWindow):
 class HelpWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('help_window.ui', self)
+        uic.loadUi('help_window.ui', self)  # подгрузка ui файла
         # self.setupUi(self)
 
 
