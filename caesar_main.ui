@@ -199,26 +199,6 @@
        </attribute>
       </widget>
      </item>
-     <item row="2" column="2">
-      <widget class="QRadioButton" name="rb_crypt_code">
-       <property name="text">
-        <string>Шифровка</string>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">btn_group_crypt</string>
-       </attribute>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QRadioButton" name="rb_crypt_decode">
-       <property name="text">
-        <string>Дешифровка</string>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">btn_group_crypt</string>
-       </attribute>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
@@ -240,6 +220,26 @@
        </property>
        <attribute name="buttonGroup">
         <string notr="true">btn_group_cap</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QRadioButton" name="rb_crypt_code">
+       <property name="text">
+        <string>Зашифровать</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">btn_group_crypt</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QRadioButton" name="rb_crypt_decode">
+       <property name="text">
+        <string>Дешифровать</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">btn_group_crypt</string>
        </attribute>
       </widget>
      </item>
@@ -360,7 +360,7 @@
  <connections/>
  <buttongroups>
   <buttongroup name="btn_group_crypt"/>
-  <buttongroup name="btn_group_cap"/>
   <buttongroup name="btn_group_lang"/>
+  <buttongroup name="btn_group_cap"/>
  </buttongroups>
 </ui>
