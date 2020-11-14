@@ -156,7 +156,7 @@ class Ui_Mono_Alpha_Add_Dict(object):
         self.label_error.setText("")
         self.label_error.setObjectName("label_error")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(-4, 2, 541, 361))
+        self.label_10.setGeometry(QtCore.QRect(-4, -8, 541, 371))
         self.label_10.setText("")
         self.label_10.setPixmap(QtGui.QPixmap("background.jpg"))
         self.label_10.setScaledContents(True)
