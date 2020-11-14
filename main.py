@@ -573,9 +573,9 @@ class MonoAlphaAddDict(QMainWindow):
         try:
             self.key = self.le_key.text()
             self.value = self.le_value.text()
-            self.mirrior = True if self.rb_mirrior_on.isChecked() else False
+            self.mirror = True if self.rb_mirrior_on.isChecked() else False
             self.automatic = True if self.rb_cap_on.isChecked() else False
-            add_value(self.dict, self.key, self.value, self.automatic, self.mirrior)
+            add_value(self.dict, self.key, self.value, self.automatic, self.mirror)
             self.le_key.setText('')
             self.le_value.setText('')
             self.label_error.setText('')
