@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['G:\\QT_project'],
+             pathex=['E:\\Python_projects\\amgine'],
              binaries=[],
              datas=[],
              hiddenimports=[],

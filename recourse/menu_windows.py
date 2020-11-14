@@ -1,5 +1,4 @@
 import sqlite3
-
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
 from designs.help_window import Ui_Help_Window
 from designs.history_window import Ui_History_Window
@@ -53,3 +52,4 @@ class HistoryWindow(QMainWindow, Ui_History_Window):
     def delete(self):
         self.con.cursor().execute('DELETE from record_table')
         self.con.commit()
+
