@@ -46,15 +46,15 @@ class WrongLanguage(SomethingWrong):  # исключение неверно вы
     pass
 
 
-class WrongChar(SomethingWrong):  # исключение некорректоного символа
+class WrongChar(SomethingWrong):  # исключение некорректного символа
     pass
 
 
-class WrongValue(SomethingWrong):
+class WrongValue(SomethingWrong):  # исключение некорректного значения
     pass
 
 
-class WrongFormatChar(SomethingWrong):
+class WrongFormatChar(SomethingWrong):  # исключение неверного формата символов
     pass
 
 
