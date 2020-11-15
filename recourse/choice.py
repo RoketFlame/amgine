@@ -1,12 +1,12 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow
 
 from designs.choice_window import Ui_Central_MainWindow
+from recourse.caesar import CaesarMainWindow
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
 from recourse.monoalphabet import MonoAlphaMain
+from recourse.morse import MorseMainWindow
 from recourse.number_systems import NumberSystemsMain
 from recourse.vigenere import VigenereMainWindow
-from recourse.morse import MorseMainWindow
-from recourse.caesar import CaesarMainWindow
 
 
 class ChoiceWindow(QMainWindow, Ui_Central_MainWindow):

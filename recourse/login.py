@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
+from PyQt5.QtWidgets import QDialog
 
+import recourse.just_login
 from designs.login_dialog import Ui_Dialog
 from recourse.choice import ChoiceWindow
-import recourse.just_login
 
 
 class LoginDialog(QDialog, Ui_Dialog):

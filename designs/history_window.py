@@ -30,5 +30,6 @@ class Ui_History_Window(object):
         _translate = QtCore.QCoreApplication.translate
         History_window.setWindowTitle(_translate("History_window", "История"))
         self.btn_refresh.setText(_translate("History_window", "Обновить табл"))
-        self.label.setText(_translate("History_window", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Отображение истории кодировок</span></p></body></html>"))
+        self.label.setText(_translate("History_window",
+                                      "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Отображение истории кодировок</span></p></body></html>"))
         self.btn_delete.setText(_translate("History_window", "Очистить историю"))

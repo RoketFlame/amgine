@@ -1,10 +1,11 @@
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
 
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
+
+import recourse.just_login
 from all_crypto_functions import caesar_code, SomethingWrong
 from designs.caesar_main import Ui_Caesar_Main_Window
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
-import recourse.just_login
 
 
 class CaesarMainWindow(QMainWindow, Ui_Caesar_Main_Window):

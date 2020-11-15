@@ -1,13 +1,14 @@
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
+
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
 from numpy import transpose
 
+import recourse.just_login
 from all_crypto_functions import monoalphabetic_code, SomethingWrong, create_dict, add_value
 from designs.mono_add_dict import Ui_Mono_Alpha_Add_Dict
 from designs.mono_main import Ui_Mono_Alpha_Main
 from designs.mono_use_dict import Ui_Mono_Alpha_Use_Dict
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
-import recourse.just_login
 
 
 class MonoAlphaMain(QMainWindow, Ui_Mono_Alpha_Main):

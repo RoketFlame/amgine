@@ -1,10 +1,11 @@
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
 
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
+
+import recourse.just_login
 from all_crypto_functions import encode_in_number_systems, decode_in_number_systems
 from designs.number_systems_main import Ui_Number_Systems_Main
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
-import recourse.just_login
 
 
 class NumberSystemsMain(QMainWindow, Ui_Number_Systems_Main):

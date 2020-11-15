@@ -1,10 +1,11 @@
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
 
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
+
+import recourse.just_login
 from all_crypto_functions import morse_encode, morse_decode, SomethingWrong
 from designs.morse_main import Ui_Morse_Main_Window
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
-import recourse.just_login
 
 
 class MorseMainWindow(QMainWindow, Ui_Morse_Main_Window):

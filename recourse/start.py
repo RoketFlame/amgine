@@ -1,6 +1,7 @@
+from PyQt5.QtWidgets import QMainWindow
+
 from designs.start_window import Ui_Start_Window
 from recourse.login import LoginDialog
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
 
 

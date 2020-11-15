@@ -1,12 +1,10 @@
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
 
 from all_crypto_functions import vigenere_encode, vigenere_decode, SomethingWrong
 from designs.vigenere_main import Ui_Vigenere_Main_Window
 from recourse.menu_windows import InfoWindow, HistoryWindow, HelpWindow
 import recourse.just_login
-
-
 
 
 class VigenereMainWindow(QMainWindow, Ui_Vigenere_Main_Window):
